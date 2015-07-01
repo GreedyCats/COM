@@ -1,0 +1,22 @@
+.loadingAnim{
+    z-index: 500;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right:0;
+    pointer-events: none;
+    background: url("/source/dev/widget/loading/loading.gif") center center no-repeat rgba(255,255,255,0.8);
+    background-size: 80px;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -ms-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+
+    &.show{
+        opacity: 1;
+    }
+    &.hide{
+        opacity: 0;
+    }
+}
