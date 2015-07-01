@@ -1,0 +1,19 @@
+#apple temp files
+*.DS_Store
+
+#webstorm temp files
+*.idea
+
+#nodejs modules
+*node_modules/
+
+*.sublime-project
+*.sublime-workspace
+
+*.out
+*.swp
+*.log
+
+#test server API
+server/node_modules
+
