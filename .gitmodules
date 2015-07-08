@@ -1,0 +1,3 @@
+[submodule "COM.wiki"]
+	path = COM.wiki
+	url = https://github.com/GreedyCats/COM.wiki.git
