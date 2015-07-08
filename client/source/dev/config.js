@@ -1,3 +1,5 @@
+var isDebugMode = document.body.getAttribute("debug") === "true";
+var deps = isDebugMode ? [] : ['source/0.1.0/all.built.min'];
 require.config({
 
     baseUrl: '/',
@@ -25,7 +27,7 @@ require.config({
         'text':'package/require-text/2.0.14/text'
     },
 
-    deps: ['jsx!widget/svg/main'],
+    deps: deps,
 
     shim: {
         'React': {
@@ -52,7 +54,7 @@ require.config({
 
 
 
-require(['require', 'React', 'jsx!' + document.body.getAttribute("data-main")], function(require, React, Main) {
+require(['require', 'React', 'jsx!' + document.body.getAttribute("data-main"),'jsx!widget/svg/main'], function(require, React, Main) {
     React.render(
         React.createElement(Main, null),
         document.body
