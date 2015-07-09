@@ -9,9 +9,10 @@ var users = require('./routes/users');
 var packages = require('./routes/packages');
 var products = require('./routes/products');
 var mongoose = require('mongoose');
+var CONFIG = require('./config.json');
 
 //connect to mongoose
-mongoose.connect('mongodb://gc:gc@192.168.112.94:27017/gc');
+mongoose.connect('mongodb://'+CONFIG.MONGO_USER+':'+CONFIG.MONGO_PSASWORD+'@'+CONFIG.MONGO_SERVER+':'+CONFIG.MONGO_PORT+'/'+CONFIG.MONGO_DATABASE);
 
 var app = express();
 
