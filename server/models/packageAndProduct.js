@@ -12,6 +12,6 @@ var packageAndProductSchema = new Schema({
 	}
 });
 
-var packageAndProductModel = mongoose.model('packageAndProductSchema', packageAndProductSchema);
+var packageAndProductModel = mongoose.model('packageAndProduct', packageAndProductSchema);
 
 module.exports = packageAndProductModel;

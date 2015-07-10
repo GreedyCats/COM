@@ -7,6 +7,5 @@ module.exports = {
 		newProduct.save(function(err,data){
 			next(err,data);
 		});
-		return newProduct;
 	}
 };
