@@ -14,6 +14,6 @@ var packageSchema = new Schema({
 	desc: {type: String, default: ""}
 });
 
-var packageModel = mongoose.model('Package', goodSchema);
+var packageModel = mongoose.model('Package', packageSchema);
 
 module.exports = packageModel;

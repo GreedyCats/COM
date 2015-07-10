@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var evaluationSchema = Schema({
+var evaluationSchema = new Schema({
 	score: {type: Number, default: 0},
 	good: {
 		type: Schema.Types.ObjectId,
@@ -9,6 +9,6 @@ var evaluationSchema = Schema({
 	}
 });
 
-var evaluationModel = mongoose.Model('Evaluation', evaluationSchema);
+var evaluationModel = mongoose.model('Evaluation', evaluationSchema);
 
 module.exports = evaluationModel;

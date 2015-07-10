@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var countrySchema = Schema({
+var countrySchema = new Schema({
 	name: {type: String, default: ""},
 	flagUrl: {type: String, default: ""}
 });
 
-var countryModel = mongoose.Model('Country', countrySchema);
+var countryModel = mongoose.model('Country', countrySchema);
 
 module.exports = countryModel;
