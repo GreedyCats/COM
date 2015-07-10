@@ -10,10 +10,6 @@ var productSchema = new Schema({
 	}
 });
 
-productSchema.methods.addOne = function(data,next){
-	
-}
+var ProductModel = mongoose.model('Product', productSchema);
 
-var productModel = mongoose.model('Product', productSchema);
-
-module.exports = productModel;
+module.exports = ProductModel;

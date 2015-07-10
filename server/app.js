@@ -5,14 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var packages = require('./routes/packages');
-var products = require('./routes/products');
+var user = require('./routes/user');
+var package = require('./routes/package');
+var product = require('./routes/product');
+var country = require('./routes/country');
 var mongoose = require('mongoose');
 var CONFIG = require('./config.json');
 
 //connect to mongoose
-mongoose.connect('mongodb://'+CONFIG.MONGO_USER+':'+CONFIG.MONGO_PSASWORD+'@'+CONFIG.MONGO_SERVER+':'+CONFIG.MONGO_PORT+'/'+CONFIG.MONGO_DATABASE);
+mongoose.connect('mongodb://'+CONFIG.MONGO_USER+':'+CONFIG.MONGO_PASSWORD+'@'+CONFIG.MONGO_SERVER+':'+CONFIG.MONGO_PORT+'/'+CONFIG.MONGO_DATABASE);
 
 var app = express();
 
@@ -33,9 +34,10 @@ app.use(express.static(
 ));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/packages', packages);
-app.use('/products', products);
+app.use('/user', user);
+app.use('/package', package);
+app.use('/product', product);
+app.use('/country', country);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
