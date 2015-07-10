@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var evaluationSchema = Schema({
-	score: Number,
+	score: {type: Number, default: 0},
 	good: {
 		type: Schema.Types.ObjectId,
 		ref: 'Good'
