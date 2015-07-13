@@ -21,6 +21,18 @@ router.get('/addOneTest', function(req, res) {
     		res.send(data+'');
     	}
     })
+
+});
+
+router.get('/getAll', function(req, res) {
+	product.getAll(function(err,data){
+    	if (err) {
+    		res.send(500);
+    	}else{
+    		var data = JSON.stringify(data);
+    		res.send(data);
+    	}
+    })
 });
 
 module.exports = router;

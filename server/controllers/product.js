@@ -7,5 +7,8 @@ module.exports = {
 		newProduct.save(function(err,data){
 			next(err,data);
 		});
+	},
+	getAll:function(next){
+		Product.find().select('_id title weight country').populate({path:'country',select:'name flagUrl'}).exec(next);
 	}
 };

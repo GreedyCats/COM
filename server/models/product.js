@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var country = require('./country');
 
 var productSchema = new Schema({
 	title: {type: String, default: ""},
