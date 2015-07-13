@@ -1,4 +1,4 @@
-var Package = require('../models/product');
+var Package = require('../models/package');
 
 module.exports = {
 	model:Package,
@@ -7,7 +7,6 @@ module.exports = {
 		newPackage.save(function(err,data){
 			next(err,data);
 		});
-		return newProduct;
 	},
 	getTodayPackages:function(next){
 		Package.find().select('_id title weight country').populate({path:'country',select:'name flagUrl'}).exec(next);

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var package = require('../controllers/package');
+var packages = require('../controllers/package');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -8,29 +8,24 @@ router.get('/', function(req, res) {
 });
 
 router.get('/addOneTest', function(req, res) {
-
-	package.addOne({
+	packages.addOne({
         'title': 'Summer Tea 夏日么么茶',
-        'subTitle':'28',
+        'subTitle':'夏日么么茶下午茶系列',
         'price':68,
         'originalPrice':86,
-        'type':'',
-        'typeName':'',
-        'activityType':'',
-        'activityTypeName':'',
-        'packageImage':'',
-        'desc':''
+        'packageImage':'/uploads/1.jpeg'
     },function(err,data){
     	if (err) {
     		res.send(500);
     	}else{
-    		res.send(data+'');
+    		var data = JSON.stringify(data);
+    		res.send(data);
     	}
     })
 });
 
 router.get('/getAll', function(req, res) {
-	package.getAll(function(err,data){
+	packages.getAll(function(err,data){
     	if (err) {
     		res.send(500);
     	}else{

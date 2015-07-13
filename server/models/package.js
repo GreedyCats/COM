@@ -7,9 +7,9 @@ var packageSchema = new Schema({
 	price: {type: Number, default: 0},
 	originalPrice: {type: Number, default: 0},
 	type: {type: Number, default: 0},
-	typeName: {type: String, default: ""},
+	typeName: {type: String, default: "2-4"},
 	activityType: {type: Number, default: 0},
-	activityTypeName: {type: String, default: ""},
+	activityTypeName: {type: String, default: "normal"},
 	packageImage: {type: String, default: ""},
 	desc: {type: String, default: ""}
 });
