@@ -1,8 +1,9 @@
 define([
 	'when',
 	'React',
+	'jsx!./productList/main',
 	'less!./home'
-], function(when, React){
+], function(when, React, ProductList){
 	return React.createClass({
         getInitialState: function() {
             return {
@@ -12,7 +13,7 @@ define([
 		render: function () {
 			return (
 				<div className="pageHome">
-					
+					<ProductList></ProductList>
 				</div>
 			);
 		},

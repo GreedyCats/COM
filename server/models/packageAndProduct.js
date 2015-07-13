@@ -9,7 +9,8 @@ var packageAndProductSchema = new Schema({
 	product: {
 		type: Schema.Types.ObjectId,
 		ref: 'Product'
-	}
+	},
+	count: {type: Number, default: 1}
 });
 
 var packageAndProductModel = mongoose.model('packageAndProduct', packageAndProductSchema);
