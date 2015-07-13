@@ -1,0 +1,56 @@
+@itemHeight: 80px;
+@titleFontSize: 14px;
+@subTitleFontSize: 12px;
+.productList{
+	max-width: 640px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	.productItem {
+		display: flex;
+		height: @itemHeight;
+		border-bottom: 1px dashed #d2dae8;
+		.thumbnail {
+			display: inline-block;
+			width: @itemHeight;
+			height: @itemHeight;
+		}
+		.infos {
+			flex: 1;
+			padding: 10px 10px;
+			font-size: @titleFontSize;
+			color: #33363b;
+			.title {
+				line-height: 1.2;
+				margin: 0;
+				height: @titleFontSize * 1.2 * 2;
+			}
+			.subTitle{
+				margin-top: 8px;
+				line-height: 8px;
+				.countryFlag{
+					width: 20px;
+					height: 14px;
+					vertical-align: middle;
+				}
+				.weight {
+					display: inline-block;
+					height: 14px;
+					line-height: 14px;
+					color: #7b8392;
+					font-size: @subTitleFontSize;
+				}
+			}
+		}
+		.count{
+			width: 30px;
+			line-height: @itemHeight;
+			font-size: 24px;
+			font-weight: bold;
+			color: #7b8392;
+			.multiSign{
+				font-size: 10px;
+			}
+		}
+	}
+}
