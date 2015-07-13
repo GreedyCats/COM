@@ -25,9 +25,9 @@ router.get('/addOneTest', function(req, res) {
 });
 
 router.get('/getTodayPackage', function(req, res) {
-    packages.getAll(function(err, data) {
+    packages.getTodayPackages(function(err, data) {
         if (err) {
-            res.send(500);
+        	console.log(err);
         } else {
             var data = JSON.stringify(data);
             res.send(data);
