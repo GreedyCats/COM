@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var packages = require('../controllers/package');
+var response = require('../controllers/response');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -27,11 +28,13 @@ router.get('/addOneTest', function(req, res) {
 router.get('/getTodayPackage', function(req, res) {
     packages.getTodayPackages(function(err, data) {
         if (err) {
-        	console.log(err);
+            response.status = 'failed';
+            response.message = err;
         } else {
-            var data = JSON.stringify(data);
-            res.send(data);
+            response.status = 'success';
+            response.data.list = data;
         }
+        res.send(response)
     })
 });
 
