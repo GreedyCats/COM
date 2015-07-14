@@ -1,5 +1,15 @@
 var Package = require('../models/package');
 var PackageAndProduct = require('../models/packageAndProduct');
+var Country = require('../models/country');
+
+var countries = {};
+
+Country.find().exec(function(err, data) {
+    data.forEach(function(country, index) {
+        countries[country._id] = country;
+    })
+})
+
 
 module.exports = {
     model: Package,
@@ -24,11 +34,15 @@ module.exports = {
         PackageAndProduct.find().where('package').in([packageID_1, packageID_2, packageID_3]).select('_id package product count').populate({
             path: 'package'
         }).populate({
-            path: 'product'
-        }).exec(function(err, data) {
+            path: 'product',
+            select: 'title weight country'
+        }).lean().exec(function(err, data) {
             var resData = {};
             var resArr = [];
             data.forEach(function(p, index) {
+            	p.product.country = countries[p.product.country];
+                var product = createObject(p.product);
+                product.count = p.count;
                 if (!resData.hasOwnProperty(p.package._id)) {
                     resData[p.package._id] = {
                         title: p.package.title,
@@ -41,19 +55,27 @@ module.exports = {
                         activityTypeName: p.package.activityTypeName,
                         packageImage: p.package.packageImage,
                         desc: p.package.desc,
-                        products: [p.product]
+                        products: [product]
                     }
                 } else {
-                    resData[p.package._id].products.push(p.product);
+                    resData[p.package._id].products.push(product);
                 }
             })
-            for(p in resData){
-            	var pObject = {};
-            	pObject = resData[p];
-            	pObject._id = p;
-            	resArr.push(pObject);
+            for (p in resData) {
+                var pObject = {};
+                pObject = resData[p];
+                pObject._id = p;
+                resArr.push(pObject);
             }
             next(err, resArr);
         });
     }
 };
+
+function createObject(obj) {
+    var newObj = {};
+    for (key in obj) {
+        newObj[key] = obj[key];
+    }
+    return newObj;
+}
