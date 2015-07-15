@@ -25,10 +25,10 @@ router.get('/addOneTest', function(req, res) {
     })
 });
 
-router.get('/getTodayPackage', function(req, res) {
+router.post('/getTodayPackage', function(req, res) {
     packages.getTodayPackages(function(err, data) {
         if (err) {
-            response.status = 'failed';
+            response.status = 'error';
             response.message = err;
         } else {
             response.status = 'success';
