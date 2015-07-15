@@ -1,17 +1,18 @@
 define([
 	'when',
 	'React',
-	'jsx!./productList/main',
+	'jsx!widget/header/main',
+	'jsx!./homeBox/main',
 	'less!./home'
-], function(when, React, ProductList){
+], function(when, React,Header,HomeBox){
 	return React.createClass({
         getInitialState: function() {
-        	this.productList = [];
+        	this.boxList = [];
             return {
 				loadingStatus : 'hide'
             };
         },
-		componentDidMount : function(){
+		componentWillMount : function(){
 			var self = this;
 			$.ajax({
 				method:'POST',
@@ -20,7 +21,8 @@ define([
 				success:function(data){
 					switch(data.status){
 						case 'success':
-							console.log(data.data);
+							self.boxList = data.data.list;
+							self.forceUpdate();
 							break;
 						case 'error':
 							alert(data.message);
@@ -30,9 +32,14 @@ define([
 			})
 		},
 		render: function () {
+			var self = this;
 			return (
 				<div className="pageHome">
-					<ProductList></ProductList>
+					{
+						self.boxList.map(function(boxData,index){
+							return(<HomeBox data={boxData}></HomeBox>);							
+						})
+					}
 				</div>
 			);
 		}
