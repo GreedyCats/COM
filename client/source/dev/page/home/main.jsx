@@ -47,7 +47,7 @@ define([
 			return (
 				<div className="pageHome">
 					<Header headerData={headerData}></Header>
-					<Swiper>
+					<Swiper className='homePageSwiper'>
 						{
 							self.boxList.map(function(boxData,index){
 								return(<HomeBox data={boxData}></HomeBox>);							

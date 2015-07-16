@@ -27,15 +27,24 @@
 			position: relative;
 			.pageBtn{
             	display: inline-block;
-            	top: -18px;
-            	width: 14%;
+            	top: -23px;
+            	width: 52px;
             	background-image: url(/source/dev/page/home/homeBox/ears.png);
             	background-size: 200% 100%;
             	.padding-propor(0.89);
             	position: absolute;
+            	.icon{
+            		width: 14px;
+            		height: 20px;
+            		top: 10px;
+            		position: absolute;
+            	}
             	&.prev{
             		background-position: 0 0;
             		left: 0;
+            		.icon{
+            			left: 10px;
+            		}
             	}
             	&.next{
             		background-position: 100% 0;

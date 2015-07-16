@@ -38,8 +38,11 @@ define(['React','jsx!../productList/main','jsx!widget/button/main','less!./homeB
                 <div className='head_img' style={{backgroundImage:'url('+this.boxData.packageImage+')'}}></div>
                 <div className='info'>
                     <div className='content'>
-                        <a href='javascript:;' className='pageBtn prev'></a>
-                        <a href='javascript:;' className='pageBtn next'></a>
+                        <a href='javascript:;' className='pageBtn prev'>
+                            <Svg name='prev' className='icon'></Svg>
+                        </a>
+                        <a href='javascript:;' className='pageBtn next'>
+                        </a>
                         <div className='info_box'>
                             <span className='title'>{this.boxData.title}</span>
                             <span className='subTitle'>{this.boxData.subTitle}</span>

@@ -7,7 +7,7 @@ define(['React','jQuery', 'swiper', 'less!./swiper'], function(React, $){
         },
         render : function(){
             return (
-                <div className='inactSwiper'>
+                <div className={'inactSwiper '+this.props.className}>
                     <div ref='contentHolder' className='swiper-wrapper'>
                         {this.props.children}
                     </div>
