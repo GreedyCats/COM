@@ -44,7 +44,6 @@ router.get('/addOneRelation', function(req, res) {
 
     var packageID_1 = '55a720d24cc9eaeb14cc4ce2'; //一个默认测试PackageID
     var packageID_2 = '55a720e14cc9eaeb14cc4ce4';
-    var packageID_3 = '55a720f94cc9eaeb14cc4ce5';
 
     var productID_1 = '55a720284cc9eaeb14cc4cdf';
     var productID_2 = '55a720294cc9eaeb14cc4ce0';
