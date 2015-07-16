@@ -5,6 +5,7 @@
     overflow: hidden;
     height: 100%;
     color: #33363b;
+	.linear-gradient(90deg;#000 #fff);
     .head_img {
         height: 400px;
         background-size: 100%;
@@ -21,13 +22,31 @@
         height: 100%;
         overflow: scroll;
         .content {
-        	height: 1000px;
         	margin-top: 320px;
 			background-color: #fff;
+			position: relative;
+			.pageBtn{
+            	display: inline-block;
+            	top: -18px;
+            	width: 14%;
+            	background-image: url(/source/dev/page/home/homeBox/ears.png);
+            	background-size: 200% 100%;
+            	.padding-propor(0.89);
+            	position: absolute;
+            	&.prev{
+            		background-position: 0 0;
+            		left: 0;
+            	}
+            	&.next{
+            		background-position: 100% 0;
+            		right: 0;
+            	}
+            }
             .info_box {
             	width: 80%;
             	display: inline-block;
                 text-align: left;
+                margin-bottom: 10px;
                 .title {
                 	margin-top: 10px;
                     display: block;
@@ -51,6 +70,54 @@
                 }
                 .priceAndType{
                 	.display(flex);
+                	.priceBox{
+                		.flex(1);
+                		.price{
+                			margin-top: 5px;
+                			display: block;
+                			color: #fc6e51;
+                			font-size: 3.2rem;
+                			&:before{
+                				content:'¥';
+                				font-size: 2rem;
+                				color: #fc6e51;
+
+                			};
+                		}
+                		.oldPrice{
+                			font-size: 1.2rem;
+                			color: rgba(123,131,146,0.6);
+                			span{
+                				font-size: 1.2rem;
+                			};
+                		}
+                	}
+                	.type{
+                		padding-top: 28px;
+                		.candys{
+                			display: inline-block;
+                			vertical-align: bottom;
+                			.candy{
+                				width: 18px;
+                				height: 18px;
+                			}
+                		}
+                		.typeInfo{
+                			display: inline-block;
+                			margin-left: 5px;
+                			font-size: 1.7rem;
+                			color: #33363b;
+                		}
+                	}
+                }
+                .addCart{
+                	width: 100%;
+                	height: 48px;
+                	line-height: 48px;
+                	font-size: 2rem;
+                	padding: 0;
+                	color: #040404;
+                	margin-top: 10px;
                 }
             }
         }

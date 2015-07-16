@@ -40,7 +40,6 @@ module.exports = {
             var resData = {};
             var resArr = [];
             data.forEach(function(p, index) {
-                // console.log(p.product.country)
             	var countryObj = countries[p.product.country];
                 var product = createObject(p.product);
                 product.count = p.count;

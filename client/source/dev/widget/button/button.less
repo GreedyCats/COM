@@ -1,44 +1,23 @@
 .commonButton{
 	border-radius: 3px;
-
 	-webkit-transition:background-color 0.3s, border 0.3s, color 0.3s;
 	-ms-transition:background-color 0.3s, border 0.3s, color 0.3s;
 	-moz-transition:background-color 0.3s, border 0.3s, color 0.3s;
 	transition:background-color 0.3s, border 0.3s, color 0.3s;
-
     > *{
         vertical-align: middle;
     }
-
     .vector{
         margin-right: 4px;
     }
 
-    &.cta{
-    	display: inline-block;
-    	color: #fff;
-    	background-color: #0acddc;
-    	line-height: 30px;
-    	padding: 0 24px;
-        &.disable{
-            background-color:#ddd;
-            .vector{
-                -webkit-filter: grayscale(100%);
-                -moz-filter: grayscale(100%);
-                -ms-filter: grayscale(100%);
-                filter: grayscale(100%);
-                opacity: 0.5;
-            }
-        }
-    }
     &.normal{
     	padding: 0 24px;
-        border: 1px solid #09b9c7;
-        color: #09b9c7;
         display: inline-block;
         line-height: 28px;
         text-align: center;
-
+        color: #000;
+        background-color: #ffc107;
         &.disable{
             border:#ddd;
             color:#ddd;
@@ -51,16 +30,7 @@
             }
         }
     }
-    &.small{
-        font-size: 12px;
-        line-height: 26px;
-        height: 26px;
-        padding: 0 20px;
-        .vector{
-            width: 12px;
-            height: 12px;
-        }
-    }
+    
     &.middle{
         font-size: 12px;
         height: 32px;
@@ -71,14 +41,5 @@
             height: 12px;
         }
     }
-    &.large{
-        font-size: 18px;
-        height: 40px;
-        padding: 0 30px;
-        line-height: 40px;
-        .vector{
-            width: 18px;
-            height: 18px;
-        }
-    }
+    
 }
