@@ -27,9 +27,9 @@ module.exports = {
     },
     getTodayPackages: function(next) {
 
-        var packageID_1 = '55a3336db1146c4873b45b6a'; //一个默认测试PackageID
-        var packageID_2 = '55a349c186a985f37487fc0d';
-        var packageID_3 = '55a349e54c9f663b75868027';
+        var packageID_1 = '55a720d24cc9eaeb14cc4ce2'; //一个默认测试PackageID
+        var packageID_2 = '55a720e14cc9eaeb14cc4ce4';
+        var packageID_3 = '55a720f94cc9eaeb14cc4ce5';
 
         PackageAndProduct.find().where('package').in([packageID_1, packageID_2, packageID_3]).select('_id package product count').populate({
             path: 'package'
@@ -41,6 +41,7 @@ module.exports = {
             var resArr = [];
             data.forEach(function(p, index) {
             	p.product.country = countries[p.product.country];
+                console.log(p);
                 var product = createObject(p.product);
                 product.count = p.count;
                 if (!resData.hasOwnProperty(p.package._id)) {

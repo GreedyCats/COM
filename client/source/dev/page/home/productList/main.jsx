@@ -6,39 +6,16 @@ define([
 
 	return React.createClass({
 		getInitialState: function(){
-			return {
-				productList: []
-			}
+			return {}
 		},
 		componentDidMount: function(){
-			var productList = [{
-				title: 'SANRITSU三立 韩国进口巧克力夹心饼干',
-				weight: '92.4g',
-				thumbnail: '/uploads/productImage1.jpg',
-				countryFlag: '/uploads/korea.jpg',
-				count: 2
-			},{
-				title: 'SANRITSU三立 韩国进口巧克力夹心饼干',
-				weight: '92.4g',
-				thumbnail: '/uploads/productImage1.jpg',
-				countryFlag: '/uploads/korea.jpg',
-				count: 2
-			},{
-				title: '三立 Sanritsu 日本进口零食品 白巧克力曲奇夹心薄酥饼干96g12枚 糕点独立包装鲜美的白巧克力夹心，甜而不腻，绵软酥脆',
-				weight: '92.4g',
-				thumbnail: '/uploads/productImage1.jpg',
-				countryFlag: '/uploads/korea.jpg',
-				count: 2
-			}];
-			this.setState({
-				productList: productList
-			});
+			console.log(this.props.data);
 		},
 		render: function(){
 			return (
 				<ul className='productList'>
 				{
-					this.state.productList.map(function(product, index){
+					this.props.data.map(function(product, index){
 						return (
 							<li className="productItem">
 								<img className="thumbnail" src={product.thumbnail} />

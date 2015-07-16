@@ -42,14 +42,14 @@ router.get('/addOneRelation', function(req, res) {
 
     var data = [];
 
-    var packageID_1 = '55a3336db1146c4873b45b6a'; //一个默认测试PackageID
-    var packageID_2 = '55a349c186a985f37487fc0d';
-    var packageID_3 = '55a349e54c9f663b75868027';
+    var packageID_1 = '55a720d24cc9eaeb14cc4ce2'; //一个默认测试PackageID
+    var packageID_2 = '55a720e14cc9eaeb14cc4ce4';
+    var packageID_3 = '55a720f94cc9eaeb14cc4ce5';
 
-    var productID_1 = '55a318ee7b484bef6fa76bad';
-    var productID_2 = '55a318f1e06032f36fb8a1a8';
-    var productID_3 = '55a318f66bc37df46f07ca74';
-    var productID_4 = '55a319092707d2f96f5ac2a6';
+    var productID_1 = '55a720284cc9eaeb14cc4cdf';
+    var productID_2 = '55a720294cc9eaeb14cc4ce0';
+    var productID_3 = '55a7202a4cc9eaeb14cc4ce1';
+    var productID_4 = '55a720274cc9eaeb14cc4cde';
 
     var r1 = {
         package: packageID_1,
