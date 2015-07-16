@@ -33,8 +33,19 @@ define([
 		},
 		render: function () {
 			var self = this;
+			var headerData = {
+				btn1:{
+					href:'',
+					icon:'menu'
+				},
+				btn2:{
+					href:'',
+					icon:'cat'
+				}
+			}
 			return (
 				<div className="pageHome">
+					<Header headerData={headerData}></Header>
 					{
 						self.boxList.map(function(boxData,index){
 							return(<HomeBox data={boxData}></HomeBox>);							

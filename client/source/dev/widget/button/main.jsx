@@ -1,14 +1,6 @@
 define(['React','less!./button'], function(React){
 
  return React.createClass({
-    getInitialState: function() {
-        return {
-            type : ""
-        }
-    },
- 	  handleClick:function(e){
-        
- 	  },
     render: function () {
     	var className = [
             this.props.type || 'normal',
@@ -19,8 +11,10 @@ define(['React','less!./button'], function(React){
         if(this.props.icon){
             var icon = <Svg name={this.props.icon}></Svg>;
         }
+        var href = this.props.href ? this.props.href : 'javascript:;';
+        var onClickFunc = this.props.onClick ? this.props.onClick : null;
       return (
-        	<a className={className} href="javascript:;" onClick={this.handleClick} >
+        	<a className={className} href={href} onClick={onClickFunc} >
             {icon}
             {this.props.text || ''}
           </a>
