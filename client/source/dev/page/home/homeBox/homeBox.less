@@ -1,34 +1,62 @@
-.homeBox{
-	position: relative;
-	overflow: hidden;
-	.head_img{
-		height: 400px;
-		background-size: 100%;
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		z-index: -1;
-	}
-	.info{
-		position: relative;
-		text-align: center;
-		background-color: #fff;
-		z-index: 1;
-		margin-top: 320px;
-		.info_box{
-			width: 80%;
-			display: inline-block;
-			text-align: left;
-			.title{
-				display: block;
-			}
-			.subTitle{
-				display: block;
-			}
-		}
-	}
-	&:nth-child(2){
-		display: none;
-	};
+@import '../../../global/global.less';
+@import '../../../global/common.less';
+.homeBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    color: #33363b;
+    .head_img {
+        height: 400px;
+        background-size: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+    .info {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        height: 100%;
+        overflow: scroll;
+        .content {
+        	height: 1000px;
+        	margin-top: 320px;
+			background-color: #fff;
+            .info_box {
+            	width: 80%;
+            	display: inline-block;
+                text-align: left;
+                .title {
+                	margin-top: 10px;
+                    display: block;
+                    font-size: 1.8rem;
+                    position: relative;
+                    &:after{
+                    	content:'';
+                    	position:absolute;
+                    	bottom: -2px;
+                    	left: 0;
+                    	width:25px;
+                    	height: 0;
+						border: 1px solid @mainColor;
+                    };
+                }
+                .subTitle {
+                	margin-top: 10px;
+                    display: block;
+                    font-size: 1.3rem;
+                    color: #7b8392;
+                }
+                .priceAndType{
+                	.display(flex);
+                }
+            }
+        }
+    }
+    &:nth-child(2) {
+        display: none;
+    }
+    ;
 }
