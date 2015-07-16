@@ -40,12 +40,11 @@ module.exports = {
             var resData = {};
             var resArr = [];
             data.forEach(function(p, index) {
-                // console.log(p.product.country);
-            	p.product.country = countries[p.product.country];
-                console.log(p.product.country);
+                // console.log(p.product.country)
+            	var countryObj = countries[p.product.country];
                 var product = createObject(p.product);
-
                 product.count = p.count;
+                product.country = countryObj;
                 if (!resData.hasOwnProperty(p.package._id)) {
                     resData[p.package._id] = {
                         title: p.package.title,
