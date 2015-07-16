@@ -13,6 +13,8 @@ var packageAndProductSchema = new Schema({
 	count: {type: Number, default: 1}
 });
 
+packageAndProductSchema.set('toObject', { virtuals: true })
+
 var packageAndProductModel = mongoose.model('packageAndProduct', packageAndProductSchema);
 
 module.exports = packageAndProductModel;
