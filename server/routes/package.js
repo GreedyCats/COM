@@ -44,11 +44,10 @@ router.get('/addOneRelation', function(req, res) {
 
     var packageID_1 = '55a720d24cc9eaeb14cc4ce2'; //一个默认测试PackageID
     var packageID_2 = '55a720e14cc9eaeb14cc4ce4';
-    var packageID_3 = '55a720f94cc9eaeb14cc4ce5';
 
-    var productID_1 = '55a720284cc9eaeb14cc4cdf';
+    var productID_1 = '55a766e05eb73e2c1c8ca291';
     var productID_2 = '55a720294cc9eaeb14cc4ce0';
-    var productID_3 = '55a7202a4cc9eaeb14cc4ce1';
+    var productID_3 = '55a766db5eb73e2c1c8ca28f';
     var productID_4 = '55a720274cc9eaeb14cc4cde';
 
     var r1 = {

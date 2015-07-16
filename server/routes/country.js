@@ -10,8 +10,8 @@ router.get('/', function(req, res) {
 router.get('/addOneTest', function(req, res) {
 
 	country.addOne({
-        'name': '美国',
-        'flagUrl':'http://img.sj33.cn/uploads/allimg/201401/7-14012P15942U3.jpg'
+        'name': '韩国',
+        'flagUrl':'http://yjfs.cname02.com/files/gls500257/500260.jpg'
     },function(err,data){
     	if (err) {
     		res.send(500);

@@ -29,9 +29,8 @@ module.exports = {
 
         var packageID_1 = '55a720d24cc9eaeb14cc4ce2'; //一个默认测试PackageID
         var packageID_2 = '55a720e14cc9eaeb14cc4ce4';
-        var packageID_3 = '55a720f94cc9eaeb14cc4ce5';
 
-        PackageAndProduct.find().where('package').in([packageID_1, packageID_2, packageID_3]).select('_id package product count').populate({
+        PackageAndProduct.find().where('package').in([packageID_1, packageID_2]).select('_id package product count').populate({
             path: 'package'
         }).populate({
             path: 'product',
