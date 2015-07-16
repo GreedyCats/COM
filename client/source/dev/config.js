@@ -24,7 +24,8 @@ require.config({
         'jQuery': 'package/jquery/jquery-2.1.4.min',
         'when': 'package/when/3.4.6/when-bundle.min',
         'svg': 'source/dev/global/require-svg/svg',
-        'text':'package/require-text/2.0.14/text'
+        'text':'package/require-text/2.0.14/text',
+        'swiper':'package/swiper/swiper.min'
     },
 
     deps: deps,
@@ -36,6 +37,9 @@ require.config({
         'JSXTransformer': 'JSXTransformer',
         'jQuery': {
             'exports': 'jQuery'
+        },
+        'swiper': {
+            'exports': 'swiper'
         }
     },
 

@@ -3,8 +3,9 @@ define([
 	'React',
 	'jsx!widget/header/main',
 	'jsx!./homeBox/main',
+	'jsx!widget/swiper/main',
 	'less!./home'
-], function(when, React,Header,HomeBox){
+], function(when, React,Header,HomeBox,Swiper){
 	return React.createClass({
         getInitialState: function() {
         	this.boxList = [];
@@ -46,11 +47,13 @@ define([
 			return (
 				<div className="pageHome">
 					<Header headerData={headerData}></Header>
-					{
-						self.boxList.map(function(boxData,index){
-							return(<HomeBox data={boxData}></HomeBox>);							
-						})
-					}
+					<Swiper>
+						{
+							self.boxList.map(function(boxData,index){
+								return(<HomeBox data={boxData}></HomeBox>);							
+							})
+						}
+					</Swiper>
 				</div>
 			);
 		}

@@ -9,7 +9,7 @@ define([
 			return {}
 		},
 		componentDidMount: function(){
-			console.log(this.props.data);
+			// console.log(this.props.data);
 		},
 		render: function(){
 			return (
