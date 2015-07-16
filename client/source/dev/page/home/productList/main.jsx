@@ -22,7 +22,7 @@ define([
 								<div className="infos">
 									<p className="title">{product.title}</p>
 									<div className="subTitle">
-										<img className="countryFlag" src={product.countryFlag} />
+										<img className="countryFlag" src={product.country ? product.country.flagUrl : ''} />
 										<span className="weight">{product.weight}/盒</span>
 									</div>
 								</div>

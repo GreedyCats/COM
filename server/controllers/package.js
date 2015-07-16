@@ -35,14 +35,16 @@ module.exports = {
             path: 'package'
         }).populate({
             path: 'product',
-            select: 'title weight country'
+            select: 'title weight country thumbnail'
         }).lean().exec(function(err, data) {
             var resData = {};
             var resArr = [];
             data.forEach(function(p, index) {
+                // console.log(p.product.country);
             	p.product.country = countries[p.product.country];
-                console.log(p);
+                console.log(p.product.country);
                 var product = createObject(p.product);
+
                 product.count = p.count;
                 if (!resData.hasOwnProperty(p.package._id)) {
                     resData[p.package._id] = {
