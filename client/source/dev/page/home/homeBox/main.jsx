@@ -38,10 +38,11 @@ define(['React','jsx!../productList/main','jsx!widget/button/main','less!./homeB
                 <div className='head_img' style={{backgroundImage:'url('+this.boxData.packageImage+')'}}></div>
                 <div className='info'>
                     <div className='content'>
-                        <a href='javascript:;' className='pageBtn prev'>
+                        <a href='javascript:;' className='pageBtn prev' onClick={this.props.swipe.bind(null,'prev')}>
                             <Svg name='prev' className='icon'></Svg>
                         </a>
-                        <a href='javascript:;' className='pageBtn next'>
+                        <a href='javascript:;' className='pageBtn next' onClick={this.props.swipe.bind(null,'next')}>
+                            <Svg name='next' className='icon'></Svg>
                         </a>
                         <div className='info_box'>
                             <span className='title'>{this.boxData.title}</span>

@@ -9,6 +9,8 @@ define([
 	return React.createClass({
         getInitialState: function() {
         	this.boxList = [];
+        	this.swiper = null;
+        	this.currentIndex = 1;
             return {
 				loadingStatus : 'hide'
             };
@@ -32,6 +34,20 @@ define([
 				}
 			})
 		},
+		onSlideChangeEnd:function(swiper){
+			this.currentIndex = swiper.activeIndex + 1;
+			$('.currentIndex').text(this.currentIndex);
+		},
+		getInstance:function(instance){
+			this.swiper = instance;
+		},
+		swipe:function(direction){
+			if (direction == 'next') {
+				this.swiper.slideNext();
+			}else if(direction == 'prev'){
+				this.swiper.slidePrev();
+			}
+		},
 		render: function () {
 			var self = this;
 			var headerData = {
@@ -45,12 +61,17 @@ define([
 				}
 			}
 			return (
-				<div className="pageHome">
+				<div className='pageHome'>
 					<Header headerData={headerData}></Header>
-					<Swiper className='homePageSwiper'>
+					<div className='pagination'>
+						<span className="currentIndex">{this.currentIndex}</span>
+						<span className="line"></span>
+						<span className="totolLength">{this.boxList.length}</span>
+					</div>
+					<Swiper className='homePageSwiper' onSlideChangeEnd={this.onSlideChangeEnd} getInstance={this.getInstance}>
 						{
 							self.boxList.map(function(boxData,index){
-								return(<HomeBox data={boxData}></HomeBox>);							
+								return(<HomeBox data={boxData} swipe={self.swipe}></HomeBox>);							
 							})
 						}
 					</Swiper>

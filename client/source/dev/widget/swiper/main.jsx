@@ -3,7 +3,8 @@ define(['React','jQuery', 'swiper', 'less!./swiper'], function(React, $){
         componentDidUpdate:function(){
             var $content = $(this.refs.contentHolder.getDOMNode());
             $content.children().addClass('swiper-slide');
-            var packageSwiper = new Swiper('.inactSwiper');
+            var packageSwiper = new Swiper('.inactSwiper',this.props);
+            this.props.getInstance && this.props.getInstance(packageSwiper);
         },
         render : function(){
             return (
