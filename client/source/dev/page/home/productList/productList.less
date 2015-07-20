@@ -1,28 +1,5 @@
-.display(...) {
-    display: @arguments;
-}
-
-.display(@value)when(@value=flex) {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: @value;
-}
-
-.display(@value)when(@value=inline-flex) {
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: @value;
-}
-
-.flex(@v: 1) {
-    -webkit-box-flex: @v;
-    -webkit-flex: @v;
-    -ms-flex: @v;
-    flex: @v;
-    width: 100%;
-}
+@import '../../../global/global.less';
+@import '../../../global/common.less';
 
 @itemHeight: 85px;
 @titleFontSize: 1.4rem;

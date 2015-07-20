@@ -1,0 +1,79 @@
+@import '../../global/base.less';
+@import '../../global/common.less';
+html,body{
+	height: 100%;
+}
+.pageDetail {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll; 
+	.topBox{
+		position: relative;
+		padding: 280px 40px 25px;  
+		border-bottom: 1px solid #e4e8f0;
+		.topImage{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 280px;
+		}
+		.title{
+			font-size: 1.4rem;
+			color: #33363b;
+			line-height: 1.4;
+		}
+		.subTitle{
+			font-size: 1.2rem;
+			color: #999;
+			line-height: 1.4;
+		}
+		.topOtherInfo{
+			.display(flex);
+			margin-top: 10px;
+			.leftBox{
+				.flex(1);
+				text-align: left;
+				.countryFlag{
+					width: 24px;
+					height: 16px;
+					vertical-align: text-bottom;
+					margin-right: 5px;
+				}
+				.weight{
+					color: #7b8392;
+					font-size: 1.4rem;
+				}
+			}
+			.rightBox{
+				.flex(1);
+				text-align: right;
+				font-size: 1.2rem;
+				color: #bbb;
+			}
+			
+		}
+	}
+	.middleLine{
+		height: 10px;
+		background-color: #edeff0;
+	}
+	.bottomBox{
+		.tabList{
+			text-align: justify;
+			height: 100px;
+			width: 100%;
+			.tabItem{
+				display: inline-block;
+				width: 80px;
+				text-align: center;
+			}
+			.justifyline{
+				display: inline-block;
+				width: 100%;
+				height: 1px;
+			}
+		}
+	}
+}
+

@@ -1,7 +1,7 @@
 define([
 	'React',
 	'jQuery',
-	'less!./productList.less'
+	'less!./productList'
 ],function(React, $){
 
 	return React.createClass({
