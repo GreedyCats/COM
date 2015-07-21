@@ -9,6 +9,7 @@ define([
 			return {}
 		},
 		render: function(){
+			var self = this;
 			return (
 				<div className='pageDetail'>
 					<div className='topBox'>
@@ -32,21 +33,36 @@ define([
 					</div>
 					<div className='middleLine'></div>
 					<div className='bottomBox'>
-						<ul className='tabList'>
-							<li className='tabItem active'>
+						<div className='tabList'>
+							<div className='tabItem active'>
 								<p className='tabTitle'>规格参数</p>
 								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<li className='tabItem'>
+							</div>
+							<div className='tabItem'>
 								<p className='tabTitle'>规格参数</p>
 								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<li className='tabItem'>
+							</div>
+							<div className='tabItem'>
 								<p className='tabTitle'>规格参数</p>
 								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<div className='justifyline'></div>
-						</ul>
+							</div>
+							<div className='tabItem'>
+								<p className='tabTitle'>规格参数</p>
+								<p className='tabSubtitle'>Specification</p>
+							</div>
+							<div className='tabItem'>
+								<p className='tabTitle'>规格参数</p>
+								<p className='tabSubtitle'>Specification</p>
+							</div>
+							<div className='tabItem'>
+								<p className='tabTitle'>规格参数</p>
+								<p className='tabSubtitle'>Specification</p>
+							</div>
+							<div className='tabItem'>
+								<p className='tabTitle'>规格参数</p>
+								<p className='tabSubtitle'>Specification</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			);

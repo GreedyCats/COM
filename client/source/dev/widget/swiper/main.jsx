@@ -1,6 +1,6 @@
 define(['React','jQuery', 'swiper', 'less!./swiper'], function(React, $){
     return React.createClass({
-        componentDidUpdate:function(){
+        componentDidMount:function(){
             var $content = $(this.refs.contentHolder.getDOMNode());
             $content.children().addClass('swiper-slide');
             var packageSwiper = new Swiper('.inactSwiper',this.props);

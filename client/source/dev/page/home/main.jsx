@@ -60,6 +60,11 @@ define([
 					icon:'cat'
 				}
 			}
+
+			var HomeBoxes = self.boxList.map(function(boxData,index){
+								return(<HomeBox data={boxData} swipe={self.swipe}></HomeBox>);							
+							})
+
 			return (
 				<div className='pageHome'>
 					<Header headerData={headerData}></Header>
@@ -69,11 +74,7 @@ define([
 						<span className="totolLength">{this.boxList.length}</span>
 					</div>
 					<Swiper className='homePageSwiper' onSlideChangeEnd={this.onSlideChangeEnd} getInstance={this.getInstance}>
-						{
-							self.boxList.map(function(boxData,index){
-								return(<HomeBox data={boxData} swipe={self.swipe}></HomeBox>);							
-							})
-						}
+						{HomeBoxes}
 					</Swiper>
 				</div>
 			);
