@@ -2,11 +2,27 @@ define([
 	'when',
 	'React',
 	'jQuery',
+	'jsx!widget/swiper/main',
 	'less!./detail'
-], function(when, React, $) {
+], function(when, React, $, Swiper) {
 	return React.createClass({
 		getInitialState: function(){
-			return {}
+			this.swiper = null;
+			return {
+				currentIndex: 0
+			}
+		},
+		onSlideChangeEnd:function(swiper){
+			this.setState({
+				currentIndex: swiper.activeIndex
+			});
+		},
+		getInstance:function(instance){
+			console.log(instance);
+			this.swiper = instance;
+		},
+		swipe:function(currentIndex){
+			this.swiper && this.swiper.slideTo(currentIndex);
 		},
 		render: function(){
 			return (
@@ -30,23 +46,27 @@ define([
 							</div>
 						</div>
 					</div>
-					<div className='middleLine'></div>
 					<div className='bottomBox'>
 						<ul className='tabList'>
-							<li className='tabItem active'>
+							<li className={this.state.currentIndex == 0 ? 'tabItem active' : 'tabItem'} onClick={this.swipe.bind(this, 0)}>
 								<p className='tabTitle'>规格参数</p>
 								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<li className='tabItem'>
-								<p className='tabTitle'>规格参数</p>
-								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<li className='tabItem'>
-								<p className='tabTitle'>规格参数</p>
-								<p className='tabSubtitle'>Specification</p>
-							</li>
-							<div className='justifyline'></div>
+							</li>&nbsp;
+							<li className={this.state.currentIndex == 1 ? 'tabItem active' : 'tabItem'} onClick={this.swipe.bind(this, 1)}>
+								<p className='tabTitle'>商品图片</p>
+								<p className='tabSubtitle'>Good pictures</p>
+							</li>&nbsp;
+							<li className={this.state.currentIndex == 2 ? 'tabItem active' : 'tabItem'} onClick={this.swipe.bind(this, 2)}>
+								<p className='tabTitle'>商品评价</p>
+								<p className='tabSubtitle'>Good comment</p>
+							</li>&nbsp;
+							<li className='justifyLine'>&nbsp;</li>
 						</ul>
+						<Swiper className='detailPageSwiper' onSlideChangeEnd={this.onSlideChangeEnd} getInstance={this.getInstance}>
+							<div className='specificationBox'>规格</div>
+							<div className='pictureBox'>图片</div>
+							<div className='commentBox'>评论</div>
+						</Swiper>
 					</div>
 				</div>
 			);
