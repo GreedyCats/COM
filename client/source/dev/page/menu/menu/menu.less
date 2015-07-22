@@ -1,0 +1,65 @@
+@import '../../../global/base.less';
+
+body,html{
+	height: 100%;
+}
+.menuBox{
+	width: 100%;
+	height: 100%;
+	background: url('/source/dev/page/menu/menu/menuBg.jpg');
+	background-size: 100%;
+	overflow: hidden;
+	.menu{
+		top: 50%;
+		margin-top: -240px;
+		position: relative;
+		li{
+			.link{
+				height: 80px;
+				line-height: 80px;
+				color: #fff;
+				display: inline-block;
+				width: 100%;
+				position: relative;
+				&.on{
+					&:before{
+						display:block;
+					};
+				}
+				&:before{
+					content:'';
+					position: absolute;
+					width: 3px;
+					height: 32px;
+					left: 0;
+					top: 24px;
+					display: none;
+					background-color: #ffc107;
+				};
+				&:active{
+					background-color:rgba(0,0,0,0.1);
+				};
+				.text{
+					display: inline-block;
+					font-size: 16px;
+					margin-left: 10px;
+					width: 175px;
+					height: 80px;
+					vertical-align: -3px;
+					border-bottom: 1px solid rgba(255,255,255,0.3);
+				}
+				.en{
+					font-size: 12px;
+					margin-left: 5px;
+				}
+				.icon{
+					margin-left: 20px;
+					.vector{
+						height: 24px;
+						width: 22px;
+					}
+				}
+			}
+		}
+	}
+}

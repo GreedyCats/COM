@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
+	 height="46px" viewBox="0 0 40 46" style="enable-background:new 0 0 40 46;" xml:space="preserve">
+<defs>
+	<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0.176" y="0.578" width="39.371" height="45.029">
+		<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+	</filter>
+</defs>
+<mask maskUnits="userSpaceOnUse" x="0.176" y="0.578" width="39.371" height="45.029" id="Shopping_bag_4_3_">
+	<g id="Shopping_bag_4&#x4E0D;&#x900F;&#x660E;&#x8499;&#x7248;_3_" style="filter:url(#Adobe_OpacityMaskFilter);">
+		
+			<image style="overflow:visible;" width="42" height="48" id="Shopping_bag_4&#x4E0D;&#x900F;&#x660E;&#x8499;&#x7248;_2_" xlink:href="785522F724AA5DD6.jpg"  transform="matrix(1 0 0 1 -1 -1)">
+		</image>
+	</g>
+</mask>
+<g id="Shopping_bag_4_1_" style="mask:url(#Shopping_bag_4_3_);enable-background:new    ;">
+	<g id="Shopping_bag_4">
+		<g>
+			<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" d="M38.742,11.462H34.18V9.519c0-4.909-3.997-8.906-8.899-8.906
+				c-2.029,0-3.874,0.706-5.374,1.852c-1.508-1.166-3.367-1.887-5.414-1.887c-4.908,0-8.905,3.997-8.905,8.909v1.975H0.981
+				c-0.448,0-0.805,0.36-0.805,0.806v32.534c0,0.445,0.357,0.806,0.805,0.806h37.76c0.448,0,0.805-0.36,0.805-0.806V12.267
+				C39.547,11.822,39.19,11.462,38.742,11.462z M25.281,2.228c4.015,0,7.286,3.27,7.286,7.291v1.943h-9.174V9.487
+				c0-2.28-0.884-4.34-2.296-5.92C22.282,2.729,23.717,2.228,25.281,2.228z M21.778,9.487v1.975h-3.789V9.519
+				c0-1.881,0.738-3.581,1.909-4.876C21.052,5.935,21.778,7.62,21.778,9.487z M7.201,9.487c0-4.024,3.271-7.294,7.291-7.294
+				c1.575,0,3.025,0.516,4.217,1.369c-1.432,1.582-2.334,3.66-2.334,5.958v1.943H7.201V9.487z M1.79,13.076h3.798v25.97L1.79,42.853
+				V13.076z M2.929,43.992l3.467-3.473l3.47,3.473H2.929z M11.008,42.853l-3.807-3.807v-25.97h3.807V42.853z M37.934,43.992H12.621
+				V13.076h3.754v4.613c0,0.448,0.36,0.809,0.808,0.809c0.448,0,0.805-0.36,0.805-0.809v-4.613h14.577v4.613
+				c0,0.448,0.36,0.809,0.805,0.809c0.448,0,0.808-0.36,0.808-0.809v-4.613h3.754V43.992z"/>
+		</g>
+	</g>
+</g>
+</svg>
