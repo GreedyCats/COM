@@ -25,10 +25,11 @@ require.config({
         'when': 'package/when/3.4.6/when-bundle.min',
         'svg': 'source/dev/global/require-svg/svg',
         'text':'package/require-text/2.0.14/text',
-        'swiper':'package/swiper/swiper.min'
+        'swiper':'package/swiper/swiper.min',
+        'bridge':'source/dev/global/bridge'
     },
 
-    deps: deps,
+    deps: ['bridge'],
 
     shim: {
         'React': {

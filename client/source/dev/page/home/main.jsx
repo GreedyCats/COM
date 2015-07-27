@@ -4,8 +4,12 @@ define([
 	'jsx!widget/header/main',
 	'jsx!./homeBox/main',
 	'jsx!widget/swiper/main',
+	'package/fastclick/fastclick',
 	'less!./home'
-], function(when, React,Header,HomeBox,Swiper){
+], function(when, React,Header,HomeBox,Swiper,FC){
+
+	FC.attach(document.body);
+
 	return React.createClass({
         getInitialState: function() {
         	this.boxList = [];
@@ -52,7 +56,7 @@ define([
 			var self = this;
 			var headerData = {
 				btn1:{
-					href:'',
+					href:'#gc_showMenu',
 					icon:'menu'
 				},
 				btn2:{
