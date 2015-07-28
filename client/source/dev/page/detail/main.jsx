@@ -3,8 +3,9 @@ define([
 	'React',
 	'jQuery',
 	'jsx!widget/swiper/main',
+	'jsx!./comment/main',
 	'less!./detail'
-], function(when, React, $, Swiper) {
+], function(when, React, $, Swiper, Comment) {
 	return React.createClass({
 		getInitialState: function(){
 			this.swiper = null;
@@ -64,9 +65,55 @@ define([
 							<li className='justifyLine'>&nbsp;</li>
 						</ul>
 						<Swiper className='detailPageSwiper' onSlideChangeEnd={this.onSlideChangeEnd} getInstance={this.getInstance}>
-							<div className='specificationBox'>规格</div>
-							<div className='pictureBox'>图片</div>
-							<div className='commentBox'>评论</div>
+							<div className='specificationBox'>
+								<ul>
+									<li>
+										<ul className='firstInfo'>
+											<li>
+												<span className='infoTitle'>产地：</span>
+												<span>韩国</span>
+											</li>
+											<li>
+												<span className='infoTitle'>是否含糖：</span>
+												<span>含糖</span>
+											</li>
+											<li>
+												<span className='infoTitle'>生活方式：</span>
+												<span>早餐/正餐/小资/diy/节日/上班族</span>
+											</li>
+											<li>
+												<span className='infoTitle'>净重(g)：</span>
+												<span>350</span>
+											</li>
+											<li>
+												<span className='infoTitle'>包装：</span>
+												<span>盒装</span>
+											</li>
+											<li>
+												<span className='infoTitle'>口味：</span>
+												<span>其他口味</span>
+											</li>
+											<li>
+												<span className='infoTitle'>食品保质期：</span>
+												<span>540</span>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<p className='infoTitle'>包装清单：</p>
+										<p>由于厂商产品批次不同，具体包装清单可能各有不同</p>
+									</li>
+									<li>
+										<p className='infoTitle'>过敏信息：</p>
+										<p>本产品配料中含有质的谷物、豆类、乳类、蛋类</p>
+									</li>
+								</ul>
+							</div>
+							<div className='pictureBox'>
+								<img width='100%' src='/uploads/productImage3.png'/>
+								<img width='100%' src='/uploads/productImage2.png'/>
+							</div>
+							<Comment></Comment>
 						</Swiper>
 					</div>
 				</div>
