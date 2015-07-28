@@ -2,10 +2,15 @@ define([
 	'when',
 	'React',
 	'jQuery',
+	'jsx!widget/header/main',
 	'jsx!widget/swiper/main',
 	'jsx!./comment/main',
+	'package/fastclick/fastclick',
 	'less!./detail'
-], function(when, React, $, Swiper, Comment) {
+], function(when, React, $, Header ,Swiper, Comment,FC) {
+
+	FC.attach(document.body);
+
 	return React.createClass({
 		getInitialState: function(){
 			this.swiper = null;
@@ -27,8 +32,15 @@ define([
 		},
 		render: function(){
 			var self = this;
+			var headerData = {
+				btn1:{
+					href:'#gc_goBack',
+					icon:'back'
+				}
+			}
 			return (
 				<div className='pageDetail'>
+					<Header headerData={headerData}></Header>
 					<div className='topBox'>
 						<img className='topImage' src='/uploads/productImage2.png' />
 						<p className='title'>

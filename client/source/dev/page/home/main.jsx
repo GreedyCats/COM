@@ -3,10 +3,11 @@ define([
 	'React',
 	'jsx!widget/header/main',
 	'jsx!./homeBox/main',
+	'jsx!widget/cartBar/main',
 	'jsx!widget/swiper/main',
 	'package/fastclick/fastclick',
 	'less!./home'
-], function(when, React,Header,HomeBox,Swiper,FC){
+], function(when, React,Header,HomeBox,CartBar,Swiper,FC){
 
 	FC.attach(document.body);
 
@@ -64,7 +65,6 @@ define([
 					icon:'cat'
 				}
 			}
-
 			return (
 				<div className='pageHome'>
 					<Header headerData={headerData}></Header>
@@ -80,6 +80,7 @@ define([
 							})
 						}
 					</Swiper>
+					<CartBar></CartBar>
 				</div>
 			);
 		}

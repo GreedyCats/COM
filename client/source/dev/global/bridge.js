@@ -7,9 +7,15 @@ define(['jQuery'], function($) {
             try {
                 webkit.messageHandlers[func].postMessage("showMenu");
             } catch (err) {
-                alert('The native context does not exist yet');
+                console.log(func)
             }
 
         };
     });
+
+    return {
+        checkLogin:function(next){
+            next(false);
+        }
+    }
 })
