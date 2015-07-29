@@ -65,6 +65,7 @@ define([
 					icon:'cat'
 				}
 			}
+
 			return (
 				<div className='pageHome'>
 					<Header headerData={headerData}></Header>
