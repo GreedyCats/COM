@@ -12,7 +12,7 @@ define(['React','less!./cartBar'], function(React){
 
         }else{
             var packageID = package._id;
-            var list = this.getState().list;
+            var list = this.state.list;
             var exists = false;
             list.forEach(function(item){
                 if (item.packageID == packageID){
@@ -22,7 +22,7 @@ define(['React','less!./cartBar'], function(React){
                 }
             });
             if (!exists){
-                item.push({
+                list.push({
                     packageID : packageID,
                     count: 1
                 });
