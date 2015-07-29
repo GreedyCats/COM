@@ -36,7 +36,7 @@ define(['React','less!./cartBar'], function(React){
     render: function () {
         return (
             <div className="cartBar">
-
+                
             </div>
         );
     }
