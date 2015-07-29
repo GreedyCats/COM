@@ -2,8 +2,6 @@ define(['React','less!./cartBar'], function(React){
 
  return React.createClass({
     getInitialState: function() {
-            console.log(111);
-
         this.isLogin = false;
         this.list = [];
         return {

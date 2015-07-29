@@ -22,7 +22,9 @@ define(['jQuery'], function($) {
                     des = des.toLowerCase();
                     console.log('show:'+des);
                 }else if (regxBack.test(func)) {
-                    window.history.back();
+                    setTimeout(function(){
+                        window.history.go(-3);
+                    },0)
                 };
 
             }
