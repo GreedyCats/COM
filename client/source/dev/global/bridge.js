@@ -22,6 +22,7 @@ define(['jQuery'], function($) {
                     des = des.toLowerCase();
                     console.log('show:'+des);
                 }else if (regxBack.test(func)) {
+                    //这个goBack逻辑绝对是你们接手以来最坑的部分，如果想彻底解决这个问题，请将后端的url和前端的url一起做一次规则整理，可以参考github的url规则
                     setTimeout(function(){
                         window.history.go(-3);
                     },0)
