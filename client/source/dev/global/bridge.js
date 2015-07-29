@@ -1,4 +1,4 @@
-define(['jQuery'], function($) {
+define(['jQuery','storage'], function($) {
     var regx = /#gc_/;
     var regxGo = /go/;
     var regxShow = /show/;
@@ -50,7 +50,8 @@ define(['jQuery'], function($) {
                     return sParameterName[1] === undefined ? true : sParameterName[1];
                 }
             }
-        }
+        },
+        storage:$.localStorage
     }
 
     window.Bridge = bridge;
