@@ -3,7 +3,6 @@ define(['React','less!./cartBar'], function(React){
  return React.createClass({
     getInitialState: function() {
         this.isLogin = false;
-        this.list = [];
         return {
             list : []
         };
@@ -12,8 +11,23 @@ define(['React','less!./cartBar'], function(React){
         if (this.isLogin) {
 
         }else{
-            
-            this.list.push(package);
+            var packageID = package._id;
+            var list = this.getState().list;
+            var exists = false;
+            list.forEach(function(item){
+                if (item.packageID == packageID){
+                    item.count ++ ;
+                    exists = true;
+                    return;
+                }
+            });
+            if (!exists){
+                item.push({
+                    packageID : packageID,
+                    count: 1
+                });
+            }
+            this.setState({list: list});
             this.forceUpdate();
         }
     },
@@ -33,6 +47,7 @@ define(['React','less!./cartBar'], function(React){
         })
     },
     render: function () {
+
         return (
             <div className="cartBar">
                 <div className='content'>
