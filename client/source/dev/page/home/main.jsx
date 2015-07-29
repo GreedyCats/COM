@@ -65,7 +65,7 @@ define([
 					icon:'cat'
 				}
 			}
-
+			console.log(this.boxList)
 			return (
 				<div className='pageHome'>
 					<Header headerData={headerData}></Header>

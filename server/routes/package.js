@@ -32,9 +32,9 @@ router.post('/getTodayPackage', function(req, res) {
             response.message = err;
         } else {
             response.status = 'success';
-            response.data.list = data;
+            response.data['list'] = data;
         }
-        res.send(response)
+        res.send(response);
     })
 });
 

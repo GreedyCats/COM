@@ -15,7 +15,8 @@ define([
 		getInitialState: function(){
 			this.swiper = null;
 			return {
-				currentIndex: 0
+				currentIndex: 0,
+				productData:{}
 			}
 		},
 		onSlideChangeEnd:function(swiper){
@@ -28,19 +29,27 @@ define([
 		},
 		componentDidMount:function(){
 			//获取数据
-			// this.productID = location.
+			this.productID = Bridge.getUrlParameter('productID');
+			var self = this;
 			$.ajax({
 				method:'POST',
 				type:'JSON',
 				url:'/product/getProductById',
 				data:{
-					productID:'aaaa'
+					productID:this.productID
 				},
 				success:function(data){
-					console.log(data);
+					switch(data.status){
+						case 'success':
+							self.setState({productData:data.data});
+							break;
+						case 'error':
+							alert(data.message);
+							break;
+					}
 				},
 				error:function(err){
-					console.log(err)
+					alert(err);
 				}
 			})
 		},
@@ -51,7 +60,7 @@ define([
 			var self = this;
 			var headerData = {
 				btn1:{
-					href:'#gc_goBack',
+					href:'#gc_back',
 					icon:'back'
 				}
 			}
@@ -61,7 +70,7 @@ define([
 					<div className='topBox'>
 						<img className='topImage' src='/uploads/productImage2.png' />
 						<p className='title'>
-							三立 韩国进口巧克力夹心饼干
+							{this.state.productData.title}
 						</p>
 						<p className='subTitle'>
 							Lorem ipsum dolor sit amet, consectetur
@@ -69,11 +78,11 @@ define([
 						<div className='topOtherInfo'>
 							<div className='leftBox'>
 								<img className='countryFlag' src='/uploads/korea.jpg' />
-								<span className='weight'>92.4g/盒</span>
+								<span className='weight'>{this.state.productData.weight}g/盒</span>
 							</div>
 							<div className='rightBox'>
 								<span>原价：</span>
-								<del>¥<span>68.0</span></del>
+								<del>¥<span>{this.state.productData.originPrice}</span></del>
 							</div>
 						</div>
 					</div>
