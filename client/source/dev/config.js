@@ -26,7 +26,8 @@ require.config({
         'svg': 'source/dev/global/require-svg/svg',
         'text':'package/require-text/2.0.14/text',
         'swiper':'package/swiper/swiper.min',
-        'bridge':'source/dev/global/bridge'
+        'bridge':'source/dev/global/bridge',
+        'storage':'package/localstorage/jquery.storageapi.min'
     },
 
     deps: ['bridge'],
@@ -41,6 +42,10 @@ require.config({
         },
         'swiper': {
             'exports': 'swiper'
+        },
+        'storage':{
+            'deps':['jQuery'],
+            'exports':'storage'
         }
     },
 
