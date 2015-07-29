@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var product = require('../controllers/product');
+var Response = require('../controllers/response');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -37,13 +38,16 @@ router.get('/getAll', function(req, res) {
 
 router.post('/getProductById', function(req, res) {
     var productID = req.body.productID;
+    var response = new Response();
     product.getOneById(productID,function(err,data){
-        if (err) {
-            res.send(500);
-        }else{
-            var data = JSON.stringify(data);
-            res.send(data);
+         if (err) {
+            response.status = 'error';
+            response.message = err;
+        } else {
+            response.status = 'success';
+            response.data = data;
         }
+        res.send(response)
     })
 })
 

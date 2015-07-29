@@ -24,7 +24,7 @@ define([
 			var self = this;
 			$.ajax({
 				method:'POST',
-				type:'json',
+				type:'JSON',
 				url:'/package/getTodayPackage',
 				success:function(data){
 					switch(data.status){
@@ -68,7 +68,7 @@ define([
 					icon:'cat'
 				}
 			}
-
+			console.log(this.boxList)
 			return (
 				<div className='pageHome'>
 					<Header headerData={headerData}></Header>
