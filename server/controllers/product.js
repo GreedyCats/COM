@@ -10,5 +10,10 @@ module.exports = {
 	},
 	getAll:function(next){
 		Product.find().select('_id title weight country').populate({path:'country',select:'name flagUrl'}).exec(next);
+	},
+	getOneById:function(productID,next){
+		Product.findById(productID,function(err,data){
+			next(err,data);
+		})
 	}
 };

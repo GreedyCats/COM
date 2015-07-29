@@ -13,9 +13,11 @@ define(['jQuery'], function($) {
         };
     });
 
-    return {
+    var bridge =  {
         checkLogin:function(next){
             next(false);
         }
     }
+
+    window.Bridge = bridge;
 })

@@ -26,6 +26,24 @@ define([
 		getInstance:function(instance){
 			this.swiper = instance;
 		},
+		componentDidMount:function(){
+			//获取数据
+			// this.productID = location.
+			$.ajax({
+				method:'POST',
+				type:'JSON',
+				url:'/product/getProductById',
+				data:{
+					productID:'aaaa'
+				},
+				success:function(data){
+					console.log(data);
+				},
+				error:function(err){
+					console.log(err)
+				}
+			})
+		},
 		swipe:function(currentIndex){
 			this.swiper && this.swiper.slideTo(currentIndex);
 		},
