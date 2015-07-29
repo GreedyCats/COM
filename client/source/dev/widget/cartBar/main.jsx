@@ -14,6 +14,7 @@ define(['React','less!./cartBar'], function(React){
         if (this.isLogin) {
 
         }else{
+            
             this.list.push(package);
             this.forceUpdate();
         }
@@ -36,7 +37,20 @@ define(['React','less!./cartBar'], function(React){
     render: function () {
         return (
             <div className="cartBar">
-                
+                <div className='content'>
+                    <div className='left'>
+                        <span className='total'>合计：</span>
+                        <div className='price'>
+                            <span className='rmb'>¥</span>
+                            <span className='integer'>86.</span>
+                            <span className='decimal'>9</span>
+                        </div>
+                    </div>
+                    <div className='cartBox'>
+                        <Svg className='cart' name='cart'></Svg>
+                        <span className='number'>2</span>
+                    </div>
+                </div>
             </div>
         );
     }

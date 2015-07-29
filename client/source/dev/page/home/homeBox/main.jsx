@@ -60,7 +60,7 @@ define(['React','jsx!../productList/main','jsx!widget/button/main','less!./homeB
                                     <span className='typeInfo'>{this.boxData.typeName}</span>
                                 </div>
                             </div>
-                            <Button text='加入购物车' className='addCart'></Button>
+                            <Button text='加入购物车' className='addCart' onClick={this.props.addCart && this.props.addCart.bind(null, this.boxData)}></Button>
                         </div>
                         <ProductList data={self.boxData.products || []}></ProductList>
                     </div>

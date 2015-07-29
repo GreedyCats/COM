@@ -1,11 +1,58 @@
+@import '/source/dev/global/global.less';
+@import '/source/dev/global/common.less';
+@orangeColor: #ffc107;
 .cartBar{
 	position: fixed;
 	width: 100%;
 	height: 55px;
-	line-height: 55px;
-	background-color: #ffc107;
+	background-color: @orangeColor;
 	bottom: 0;
 	left: 0;
 	z-index: 11;
 	border-top: 1px solid #d9a406;
+	.content{
+		width: 80%;
+		margin: 0 auto;
+		.display(flex);
+		height: 100%;
+		.align-items();
+		.left{
+			.flex(1);
+			font-size: 1.4rem;
+			.price{
+				display: inline-block;
+				font-weight: bold;
+				font-size: 1.9rem;
+				.rmb{
+					vertical-align: text-bottom;
+				}
+				.integer{
+					font-size: 2.8rem;
+				}
+			}
+		}
+		.cartBox{
+			width: 25px;
+			height: 25px;
+			position: relative;
+			display: inline-block;
+			.cart{
+				width: 100%;
+				height: 100%;
+			}
+			.number{
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				top: -8px;
+				right: -8px;
+				border-radius: 100%;
+				background-color: #fff;
+				line-height: 15px;
+				font-size: 1.2rem;
+				text-align: center;
+				color: @orangeColor;
+			}
+		}
+	}
 }

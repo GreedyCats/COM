@@ -53,6 +53,9 @@ define([
 				this.swiper.slidePrev();
 			}
 		},
+		addCart: function(package){
+			this.refs.cart.addPackage(package);
+		},
 		render: function () {
 			var self = this;
 			var headerData = {
@@ -77,11 +80,11 @@ define([
 					<Swiper className='homePageSwiper' onSlideChangeEnd={this.onSlideChangeEnd} getInstance={this.getInstance}>
 						{
 							self.boxList.map(function(boxData,index){
-								return(<HomeBox data={boxData} swipe={self.swipe}></HomeBox>);							
+								return(<HomeBox data={boxData} swipe={self.swipe} addCart={self.addCart}></HomeBox>);							
 							})
 						}
 					</Swiper>
-					<CartBar></CartBar>
+					<CartBar ref='cart'></CartBar>
 				</div>
 			);
 		}
