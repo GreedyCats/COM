@@ -24,7 +24,6 @@ define([
 			});
 		},
 		getInstance:function(instance){
-			console.log(instance);
 			this.swiper = instance;
 		},
 		swipe:function(currentIndex){
