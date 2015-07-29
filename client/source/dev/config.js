@@ -44,6 +44,7 @@ require.config({
             'exports': 'swiper'
         },
         'storage':{
+            'deps':['jQuery'],
             'exports':'storage'
         }
     },
