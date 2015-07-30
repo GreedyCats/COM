@@ -13,7 +13,7 @@ define(['React','require','jQuery','less!./svg'], function(React,require,$){
          this.renderSVG();
      },
      render: function () {
-         var name = "vector " + this.props.className;
+         var name = "vector" + (this.props.className ? " "+this.props.className : "");
          return (
            <span {...this.props} className={name} dangerouslySetInnerHTML={{__html: this.svgStr}}></span>
          );

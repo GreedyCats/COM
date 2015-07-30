@@ -27,10 +27,14 @@ define(['React','less!./header'], function(React){
 		        				{icon}
         					</a>);
         	};
+            if (data.hasOwnProperty('title')) {
+                var title = data.title
+            };
             return (
                 <header className='commonHeader'>
                 	{btn1}
                 	{btn2}
+                    {title}
                 </header>
             )
         }
