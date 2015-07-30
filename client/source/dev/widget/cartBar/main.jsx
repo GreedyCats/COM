@@ -4,7 +4,8 @@ define(['React','less!./cartBar'], function(React){
     getInitialState: function() {
         this.isLogin = false;
         return {
-            list : []
+            list : [],
+            totalPrice: 0
         };
     },
     addPackage:function(package){
@@ -28,9 +29,34 @@ define(['React','less!./cartBar'], function(React){
                 });
             }
             this.setState({list: list});
+            this.getTotalPrice();
             this.forceUpdate();
         }
     },
+    getTotalPrice: function(){
+        var self = this;
+        $.ajax({
+            method:'POST',
+            type:'JSON',
+            url:'/cart/getTotalPrice',
+            data:{
+                list:this.state.list
+            },
+            success:function(data){
+                switch(data.status){
+                    case 'success':
+                        self.setState({totalPrice:data.data.totalPrice});
+                        break;
+                    case 'error':
+                        alert(data.message);
+                        break;
+                }
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
+    },  
     componentDidMount:function(){
         //判断是否是登录状态
         //如果不是 那么使用localStorage作为本地存储
@@ -42,12 +68,25 @@ define(['React','less!./cartBar'], function(React){
                 //ajax
             }else{
                 //localStorage
-                
+                var list = Bridge.storage.get('cartList');
+                self.setState({list: list});
             }
-        })
+        });
+    },
+    componentWillUpdate: function(){
+        if (this.isLogin) {
+
+        }else{
+            Bridge.storage.set('cartList', this.state.list);
+        }
     },
     render: function () {
-
+        var list = this.state.list;
+        var totalCount = 0;
+        var totalPrice = 0;
+        list.forEach(function(item){
+            totalCount += item.count;
+        });
         return (
             <div className="cartBar">
                 <div className='content'>
@@ -55,13 +94,13 @@ define(['React','less!./cartBar'], function(React){
                         <span className='total'>合计：</span>
                         <div className='price'>
                             <span className='rmb'>¥</span>
-                            <span className='integer'>86.</span>
-                            <span className='decimal'>9</span>
+                            <span className='integer'>{this.state.totalPrice}</span>
+                            <span className='decimal'>.0</span>
                         </div>
                     </div>
                     <div className='cartBox'>
                         <Svg className='cart' name='cart'></Svg>
-                        <span className='number'>2</span>
+                        <span className='number'>{totalCount}</span>
                     </div>
                 </div>
             </div>
