@@ -1,9 +1,9 @@
 var Package = require('../models/package');
 module.exports = {
-	getTotalPrice:function(list,next){
+	getTotalPrice:function(cartList,next){
 		var packageIDs = [];
 		var countObj = {};
-		list.forEach(function(item){
+		cartList.forEach(function(item){
 			packageIDs.push(item.packageID);
 			countObj[item.packageID] = item.count;
 		});
