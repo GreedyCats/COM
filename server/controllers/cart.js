@@ -33,6 +33,7 @@ module.exports = {
 			var resData = {};
 			data.forEach(function(p){
 				totalPrice += p.price * countObj[p._id];
+				p.count = countObj[p._id];
 			});
 			resData.cartListInfo = data;
 			resData.totalPrice = totalPrice.toFixed(1);
