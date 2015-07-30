@@ -8,9 +8,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/getTotalPrice', function(req, res) {
-    var list = req.body.list;
+    var cartList = req.body.cartList;
     var response = new Response();
-    cart.getTotalPrice(list, function(err, data){
+    cart.getTotalPrice(cartList, function(err, data){
     	if (err) {
             response.status = 'error';
             response.message = err;

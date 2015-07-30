@@ -11,9 +11,8 @@ define([
 	return React.createClass({
         getInitialState: function() {
             return {
-				list : [{
-
-				}]
+				cartList : [],
+				totolPrice:0
             };
         },
 		componentWillMount : function(){
@@ -24,7 +23,10 @@ define([
 					//登录后的逻辑
 				}else{
 					//本地存储
-					console.log(Bridge.storage.get('cartList'));
+					self.setState({cartList:Bridge.storage.get('cartList') || []},function(){
+						//获取数据接口
+						
+					});
 				}
 			})
 			// $.ajax({
@@ -55,6 +57,10 @@ define([
 		},
 		render: function () {
 			var self = this;
+			var totalCount = 0;
+			this.state.cartList.forEach(function(item){
+	            totalCount += item.count;
+	        });
 			var headerData = {
 				btn1:{
 					href:'#gc_back',
@@ -62,7 +68,7 @@ define([
 				},
 				title:(<div className='title'>
 							<span className="bigTitle">购物车</span>
-							<span className="smallTitle">({this.state.list.length})</span>
+							<span className="smallTitle">({totalCount})</span>
 						</div>)
 			}
 			return (

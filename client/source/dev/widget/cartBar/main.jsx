@@ -4,7 +4,7 @@ define(['React','less!./cartBar'], function(React){
     getInitialState: function() {
         this.isLogin = false;
         return {
-            list : [],
+            cartList : [],
             totalPrice: 0
         };
     },
@@ -14,9 +14,9 @@ define(['React','less!./cartBar'], function(React){
 
         }else{
             var packageID = package._id;
-            var list = this.state.list;
+            var cartList = this.state.cartList;
             var exists = false;
-            list.forEach(function(item){
+            cartList.forEach(function(item){
                 if (item.packageID == packageID){
                     item.count ++ ;
                     exists = true;
@@ -24,14 +24,14 @@ define(['React','less!./cartBar'], function(React){
                 }
             });
             if (!exists){
-                list.push({
+                cartList.push({
                     packageID : packageID,
                     count: 1
                 });
             }
-            this.setState({list: list},function(){
+            this.setState({cartList: cartList},function(){
                 self.getTotalPrice();
-                Bridge.storage.set('cartList', self.state.list);
+                Bridge.storage.set('cartList', self.state.cartList);
             });
         }
     },
@@ -42,7 +42,7 @@ define(['React','less!./cartBar'], function(React){
             type:'JSON',
             url:'/cart/getTotalPrice',
             data:{
-                list:this.state.list
+                cartList:this.state.cartList
             },
             success:function(data){
                 switch(data.status){
@@ -70,18 +70,18 @@ define(['React','less!./cartBar'], function(React){
                 //ajax
             }else{
                 //localStorage
-                var list = Bridge.storage.get('cartList') || [];
-                self.setState({list: list},function(){
+                var cartList = Bridge.storage.get('cartList') || [];
+                self.setState({cartList: cartList},function(){
                     self.getTotalPrice();
                 });
             }
         });
     },
     render: function () {
-        var list = this.state.list;
+        var cartList = this.state.cartList;
         var totalCount = 0;
         var totalPrice = 0;
-        list.forEach(function(item){
+        cartList.forEach(function(item){
             totalCount += item.count;
         });
         return (
