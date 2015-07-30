@@ -81,6 +81,21 @@ define([
 					<ul className="cartList">
 
 					</ul>
+					<div className='goPayBox'>
+						<div className='content'>
+							<div className='left'>
+								<span className='total'>合计：</span>
+		                        <div className='price'>
+		                            <span className='rmb'>¥</span>
+		                            <span className='integer'>0</span>
+		                            <span className='decimal'>.0</span>
+		                        </div>
+							</div>
+							<div className='btnGoPay'>
+								去结算
+							</div>
+						</div>
+					</div>
 				</div>
 			);
 		}

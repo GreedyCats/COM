@@ -4,6 +4,7 @@
 body{
 	background-color: #edeff0;
 }
+
 .pageCart{
 	.commonHeader{
 		background: #fff;
@@ -45,5 +46,52 @@ body{
 			display: inline-block;
 			margin-right: 15px;
 		}
+	}
+	.goPayBox{
+		@orangeColor: #ffc107;
+		height: 75px;
+		width: 100%;
+		background-color: #fff;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		border-top: 1px solid #d9d9d9;
+		.content{
+			.display(flex);
+			.align-items();
+			height: 100%;
+			width: 90%;
+			margin: 0 auto;
+			color: #040404;
+			.left{
+				display: inline-block;
+				.flex(1);
+				font-size: 1.4rem;
+				.price{
+					color: #fc6e51;
+					display: inline-block;
+					font-weight: bold;
+					font-size: 1.9rem;
+					.rmb{
+						vertical-align: text-bottom;
+					}
+					.integer{
+						font-size: 2.8rem;
+					}
+				}
+			}
+			.btnGoPay{
+				width: 140px;
+				height: 44px;
+				line-height: 44px;
+				font-size: 2.0rem;
+				text-align: center;
+				border-radius: 5px;
+				display: inline-block;
+				background-color: @orangeColor;
+			}
+		}
+		
+
 	}
 }
