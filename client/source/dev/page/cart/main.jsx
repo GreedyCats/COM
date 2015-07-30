@@ -11,11 +11,22 @@ define([
 	return React.createClass({
         getInitialState: function() {
             return {
-				list : []
+				list : [{
+
+				}]
             };
         },
 		componentWillMount : function(){
 			var self = this;
+			//这里暂时只处理未登录的情况
+			Bridge.checkLogin(function(isLogin){
+				if (isLogin) {
+					//登录后的逻辑
+				}else{
+					//本地存储
+					console.log(Bridge.storage.get('cartList'));
+				}
+			})
 			// $.ajax({
 			// 	method:'POST',
 			// 	type:'JSON',
@@ -32,6 +43,15 @@ define([
 			// 		}
 			// 	}
 			// })
+		},
+		addCountById:function(){
+
+		},
+		subCountById:function(){
+
+		},
+		removeOneById:function(){
+
 		},
 		render: function () {
 			var self = this;
@@ -52,9 +72,9 @@ define([
 						<span className='text'>免邮费</span>
 						<Svg name='truck'></Svg>
 					</div>
-					<div className="cartList">
-						
-					</div>
+					<ul className="cartList">
+
+					</ul>
 				</div>
 			);
 		}
