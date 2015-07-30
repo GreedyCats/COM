@@ -9,6 +9,7 @@ define(['React','less!./cartBar'], function(React){
         };
     },
     addPackage:function(package){
+        var self = this;
         if (this.isLogin) {
 
         }else{
@@ -28,9 +29,10 @@ define(['React','less!./cartBar'], function(React){
                     count: 1
                 });
             }
-            this.setState({list: list});
-            this.getTotalPrice();
-            this.forceUpdate();
+            this.setState({list: list},function(){
+                self.getTotalPrice();
+                Bridge.storage.set('cartList', self.state.list);
+            });
         }
     },
     getTotalPrice: function(){
@@ -68,17 +70,12 @@ define(['React','less!./cartBar'], function(React){
                 //ajax
             }else{
                 //localStorage
-                var list = Bridge.storage.get('cartList');
-                self.setState({list: list});
+                var list = Bridge.storage.get('cartList') || [];
+                self.setState({list: list},function(){
+                    self.getTotalPrice();
+                });
             }
         });
-    },
-    componentWillUpdate: function(){
-        if (this.isLogin) {
-
-        }else{
-            Bridge.storage.set('cartList', this.state.list);
-        }
     },
     render: function () {
         var list = this.state.list;
