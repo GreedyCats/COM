@@ -11,6 +11,7 @@ var packageSchema = new Schema({
 	activityType: {type: Number, default: 0},
 	activityTypeName: {type: String, default: "normal"},
 	packageImage: {type: String, default: ""},
+	thumbnail: {type: String, default: ""},
 	desc: {type: String, default: ""}
 });
 
