@@ -22,4 +22,19 @@ router.post('/getTotalPrice', function(req, res) {
     });
 });
 
+router.post('/getCartListInfo', function(req, res) {
+    var cartList = req.body.cartList;
+    var response = new Response();
+    cart.getCartListInfo(cartList, function(err, data){
+        if (err) {
+            response.status = 'error';
+            response.message = err;
+        } else {
+            response.status = 'success';
+            response.data = data;
+        }
+        res.send(response);
+    });
+});
+
 module.exports = router;

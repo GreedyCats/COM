@@ -3,6 +3,7 @@ module.exports = {
 	getTotalPrice:function(list,next){
 		var packageIDs = [];
 		var countObj = {};
+		list = list || [];
 		list.forEach(function(item){
 			packageIDs.push(item.packageID);
 			countObj[item.packageID] = item.count;
@@ -10,10 +11,30 @@ module.exports = {
 		Package.find().where('_id').in(packageIDs).select('price').exec(function(err,data){
 			var totalPrice = 0;
 			var resData = {};
-			console.log(data)
 			data.forEach(function(p){
 				totalPrice += p.price * countObj[p._id];
 			});
+			resData.totalPrice = totalPrice.toFixed(1);
+			next(err,resData);
+		});
+	},
+	getCartListInfo: function(cartList, next){
+		var packageIDs = [],
+			countObj = {};
+		cartList = cartList || [];
+
+		cartList.forEach(function(item){
+			packageIDs.push(item.packageID);
+			countObj[item.packageID] = item.count;
+		});
+
+		Package.find().where('_id').in(packageIDs).select('title thumbnail price').exec(function(err,data){
+			var totalPrice = 0;
+			var resData = {};
+			data.forEach(function(p){
+				totalPrice += p.price * countObj[p._id];
+			});
+			resData.cartListInfo = data;
 			resData.totalPrice = totalPrice.toFixed(1);
 			next(err,resData);
 		});
