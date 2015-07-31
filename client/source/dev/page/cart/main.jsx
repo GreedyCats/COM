@@ -11,7 +11,6 @@ define([
 	return React.createClass({
         getInitialState: function() {
             return {
-				cartList : [],
 				cartListInfo:[],
 				totalPrice:0
             };
@@ -32,11 +31,9 @@ define([
 							cartList:Bridge.storage.get('cartList')|| []
 						},
 						success:function(data){
-							console.log(data);
 							switch(data.status){
 								case 'success':
 									self.setState({
-										cartList:Bridge.storage.get('cartList')|| [],
 										cartListInfo:data.data.cartListInfo,
 										totalPrice:data.data.totalPrice
 									});
@@ -113,19 +110,84 @@ define([
 			})
 
 		},
-		addCountById:function(){
-
+		addCountById:function(packageID){
+            var cartListInfo = this.state.cartListInfo;
+            var self = this;
+            cartListInfo.forEach(function(item){
+                if (item._id == packageID){
+                    item.count ++ ;
+                    return;
+                }
+            });
+            this.setState({
+            	cartListInfo: cartListInfo
+            },function(){
+                self.setLocalStorage();
+                self.getTotalPrice();
+            });
 		},
-		subCountById:function(){
-
+		subCountById:function(packageID){
+			var cartListInfo = this.state.cartListInfo;
+            var self = this;
+            cartListInfo.forEach(function(item){
+                if (item._id == packageID){
+                	if (item.count === 1) {
+                		var willDelete = confirm('删除？');
+                	}else{
+                    	item.count -- ;
+                	}
+                    return;
+                }
+            });
+            this.setState({
+            	cartListInfo: cartListInfo
+            },function(){
+                self.setLocalStorage();
+                self.getTotalPrice();
+            });
 		},
 		removeOneById:function(packageID){
 			alert(packageID)
 		},
+		getTotalPrice: function(){
+	        var self = this;
+	        $.ajax({
+	            method:'POST',
+	            type:'JSON',
+	            url:'/cart/getTotalPrice',
+	            data:{
+	                cartList:Bridge.storage.get('cartList')
+	            },
+	            success:function(data){
+	                switch(data.status){
+	                    case 'success':
+	                        self.setState({totalPrice:data.data.totalPrice});
+	                        break;
+	                    case 'error':
+	                        alert(data.message);
+	                        break;
+	                }
+	            },
+	            error:function(err){
+	                alert(err);
+	            }
+	        });
+	    }, 
+		setLocalStorage:function(){
+			var cartList = [];
+			this.state.cartListInfo.forEach(function(item,index){
+				var newObj = {
+					packageID:item._id,
+					count:item.count
+				}
+				cartList.push(newObj);
+			});
+			Bridge.storage.set('cartList', cartList);
+		},
 		render: function () {
 			var self = this;
 			var totalCount = 0;
-			this.state.cartList.forEach(function(item){
+			this.state.cartListInfo.forEach(function(item){
 	            totalCount += item.count;
 	        });
 			var headerData = {
@@ -156,11 +218,11 @@ define([
 													<span className="price">¥{package.price}</span>
 												</div>
 												<div className="countBox">
-													<span className="subBtn btn">
+													<span className="subBtn btn" onClick={self.subCountById.bind(self,package._id)}>
 														<Svg className="icon" name='sub'></Svg>
 													</span>
-													<span className="curCount">1</span>
-													<span className="addBtn btn">
+													<span className="curCount">{package.count}</span>
+													<span className="addBtn btn" onClick={self.addCountById.bind(self,package._id)}>
 														<Svg className="icon" name='add2'></Svg>
 													</span>
 												</div>
@@ -172,6 +234,21 @@ define([
 							})
 						}
 					</ul>
+					<div className='goPayBox'>
+						<div className='content'>
+							<div className='left'>
+								<span className='total'>合计：</span>
+		                        <div className='price'>
+		                            <span className='rmb'>¥</span>
+		                            <span className='integer'>{this.state.totalPrice}</span>
+		                            <span className='decimal'></span>
+		                        </div>
+							</div>
+							<div className='btnGoPay'>
+								去结算
+							</div>
+						</div>
+					</div>
 				</div>
 			);
 		}

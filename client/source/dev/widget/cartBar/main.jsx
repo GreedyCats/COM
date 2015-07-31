@@ -80,10 +80,10 @@ define(['React','less!./cartBar'], function(React){
     render: function () {
         var cartList = this.state.cartList;
         var totalCount = 0;
-        var totalPrice = 0;
         cartList.forEach(function(item){
             totalCount += item.count;
         });
+        var price = String(this.state.totalPrice).split('.');
         return (
             <div className="cartBar">
                 <div className='content'>
@@ -91,14 +91,14 @@ define(['React','less!./cartBar'], function(React){
                         <span className='total'>合计：</span>
                         <div className='price'>
                             <span className='rmb'>¥</span>
-                            <span className='integer'>{this.state.totalPrice}</span>
-                            <span className='decimal'>.0</span>
+                            <span className='integer'>{price && price[0] || 0}</span>
+                            <span className='decimal'>.{price && price[1] || 0}</span>
                         </div>
                     </div>
-                    <div className='cartBox'>
+                    <a href='#gc_goCart' className='cartBox'>
                         <Svg className='cart' name='cart'></Svg>
                         <span className='number'>{totalCount}</span>
-                    </div>
+                    </a>
                 </div>
             </div>
         );

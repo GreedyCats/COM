@@ -8,15 +8,34 @@ define(['jQuery','storage'], function($) {
         if (regx.test(href)) {
             //协议名
             var func = href.match(/#gc_(\w{1,})/)[1];
-            var params = href.substring(href.indexOf('?')+1,href.length);
+            var params;
+            if (href.indexOf('?') > -1) {
+                params = href.substring(href.indexOf('?')+1,href.length);
+            };
             try {
-                webkit.messageHandlers[func].postMessage(params);
-            } catch (err) {
                 
                 if (regxGo.test(func)) {
                     var des = href.match(/go(\w{1,})/)[1];
                     des = des.toLowerCase();
-                    window.location.href = des+'.html?'+params;
+                    webkit.messageHandlers['jump'].postMessage({
+                        page:des,
+                        param:params
+                    });
+                }else if (regxShow.test(func)) {
+                    var des = href.match(/show(\w{1,})/)[1];
+                    des = des.toLowerCase();
+                    webkit.messageHandlers['show'].postMessage({
+                        page:des,
+                        param:params
+                    });
+                }else if (regxBack.test(func)) {
+                    webkit.messageHandlers['back'].postMessage({});
+                };
+            } catch (err) {
+                if (regxGo.test(func)) {
+                    var des = href.match(/go(\w{1,})/)[1];
+                    des = des.toLowerCase();
+                    window.location.href = des+'.html'+(params?'?'+params:'');
                 }else if (regxShow.test(func)) {
                     var des = href.match(/show(\w{1,})/)[1];
                     des = des.toLowerCase();
@@ -27,9 +46,7 @@ define(['jQuery','storage'], function($) {
                         window.history.go(-3);
                     },0)
                 };
-
             }
-
         };
     });
 

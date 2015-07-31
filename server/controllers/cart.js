@@ -28,15 +28,24 @@ module.exports = {
 			countObj[item.packageID] = item.count;
 		});
 
-		Package.find().where('_id').in(packageIDs).select('title thumbnail price').exec(function(err,data){
+		Package.find().where('_id').in(packageIDs).select('title thumbnail price').lean().exec(function(err,data){
 			var totalPrice = 0;
 			var resData = {};
 			data.forEach(function(p){
+				p.count = Number(countObj[p._id]);
 				totalPrice += p.price * countObj[p._id];
 			});
-			resData.cartListInfo = data;
+			resData.cartListInfo = data || [];
 			resData.totalPrice = totalPrice.toFixed(1);
 			next(err,resData);
 		});
 	}
+}
+
+function createObject(obj) {
+    var newObj = {};
+    for (key in obj) {
+        newObj[key] = obj[key];
+    }
+    return newObj;
 }
