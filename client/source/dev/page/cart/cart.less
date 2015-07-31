@@ -50,16 +50,21 @@ body{
 	.cartList{
 		margin-top: 10px;
 		border-top: 1px solid #d2dae8;
-		border-bottom: 1px solid #d2dae8;
-		background-color: #fff;
+		/*border-bottom: 1px solid #d2dae8;*/
+		
 		li{
 			display: block;
 			overflow: hidden;
 			position: relative;
+			background-color: #fff;
 			border-bottom: 1px solid #d2dae8;
-			&:last-child{
+			/*&:last-child{
 				border:none;
-			};
+			};*/
+			&.removeByTransform{
+				.transition(300ms);
+				transform: translate3d(-500px,0,0);
+			}
 			.packageWrapper{
 				width: 100%;
 				padding: 15px;
@@ -69,6 +74,7 @@ body{
 				&.transform{
 					.transition(300ms);
 				}
+
 				.packageThumb{
 					width: 60px;
 					height: 64px;

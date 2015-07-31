@@ -132,7 +132,7 @@ define([
             cartListInfo.forEach(function(item){
                 if (item._id == packageID){
                 	if (item.count === 1) {
-                		var willDelete = confirm('删除？');
+                		self.removeOneById(packageID);
                 	}else{
                     	item.count -- ;
                 	}
@@ -147,7 +147,31 @@ define([
             });
 		},
 		removeOneById:function(packageID){
-			alert(packageID)
+			var willDelete = confirm('删除？');
+			if (willDelete){
+				var itemDom = React.findDOMNode(this.refs[packageID]);
+				$(itemDom).addClass('removeByTransform');
+				
+				var cartListInfo = this.state.cartListInfo;
+	            var self = this;
+	            var deleteIndex = 0;
+	            cartListInfo.forEach(function(item, index){
+	                if (item._id == packageID){
+	                	deleteIndex = index;
+	                    return;
+	                }
+	            });
+				setTimeout(function(){
+		            cartListInfo.splice(deleteIndex, 1);
+		            self.setState({
+		            	cartListInfo: cartListInfo
+		            },function(){
+		                self.setLocalStorage();
+		                self.getTotalPrice();
+		            });
+				},300)
+				
+			}
 		},
 		getTotalPrice: function(){
 	        var self = this;
@@ -200,6 +224,7 @@ define([
 							<span className="smallTitle">({totalCount})</span>
 						</div>)
 			}
+			var price = String(this.state.totalPrice).split('.');
 			return (
 				<div className='pageCart'>
 					<Header headerData={headerData}></Header>
@@ -210,7 +235,7 @@ define([
 					<ul className="cartList">
 						{
 							this.state.cartListInfo.map(function(package,index){
-								return (<li>
+								return (<li ref={package._id}>
 											<div className="packageWrapper">
 												<img src={package.thumbnail} alt={package.title} className="packageThumb"/>
 												<div className="infoBox">
@@ -234,14 +259,14 @@ define([
 							})
 						}
 					</ul>
-					<div className='goPayBox'>
+					<div className='goPayBox' ref='goPayBox'>
 						<div className='content'>
 							<div className='left'>
 								<span className='total'>合计：</span>
 		                        <div className='price'>
 		                            <span className='rmb'>¥</span>
-		                            <span className='integer'>{this.state.totalPrice}</span>
-		                            <span className='decimal'></span>
+		                            <span className='integer'>{price && price[0] || 0}</span>
+		                            <span className='decimal'>.{price && price[1] || 0}</span>
 		                        </div>
 							</div>
 							<div className='btnGoPay'>
