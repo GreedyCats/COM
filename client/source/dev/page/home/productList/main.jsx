@@ -18,7 +18,7 @@ define([
 					this.props.data.map(function(product, index){
 						return (
 							<li className='productItem'>
-								<a href={"#gc_goDetail?productID="+product._id} className="productWrapper">
+								<a href={"#gc_go_detail.html?productID="+product._id} className="productWrapper">
 									<img className='thumbnail' src={product.thumbnail} />
 									<div className='infos'>
 										<p className='title'>{product.title}</p>

@@ -7,39 +7,34 @@ define(['jQuery','storage'], function($) {
         var href = $(this).attr('href');
         if (regx.test(href)) {
             //协议名
-            var func = href.match(/#gc_(\w{1,})/)[1];
-            var params;
-            if (href.indexOf('?') > -1) {
-                params = href.substring(href.indexOf('?')+1,href.length);
-            };
+            var func = href.match(/#gc_(.{1,})/)[1];
             try {
-                
+                var params = {};
+                // if (href.indexOf('?') > -1) {
+                //     params = href.substring(href.indexOf('?')+1,href.length);
+                // };
+                // params = JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
                 if (regxGo.test(func)) {
-                    var des = href.match(/go(\w{1,})/)[1];
-                    des = des.toLowerCase();
+                    var des = href.match(/go_(.{1,})/)[1];
                     webkit.messageHandlers['jump'].postMessage({
                         page:des,
-                        param:params
+                        params:params
                     });
                 }else if (regxShow.test(func)) {
-                    var des = href.match(/show(\w{1,})/)[1];
-                    des = des.toLowerCase();
+                    var des = href.match(/show_(.{1,})/)[1];
                     webkit.messageHandlers['show'].postMessage({
                         page:des,
-                        param:params
+                        params:params
                     });
                 }else if (regxBack.test(func)) {
                     webkit.messageHandlers['back'].postMessage({});
                 };
             } catch (err) {
                 if (regxGo.test(func)) {
-                    var des = href.match(/go(\w{1,})/)[1];
-                    des = des.toLowerCase();
-                    window.location.href = des+'.html'+(params?'?'+params:'');
+                    var des = href.match(/go_(.{1,})/)[1];
+                    window.location.href = des;
                 }else if (regxShow.test(func)) {
-                    var des = href.match(/show(\w{1,})/)[1];
-                    des = des.toLowerCase();
-                    console.log('show:'+des);
+                    var des = href.match(/show_(.{1,})/)[1];
                 }else if (regxBack.test(func)) {
                     //这个goBack逻辑绝对是你们接手以来最坑的部分，如果想彻底解决这个问题，请将后端的url和前端的url一起做一次规则整理，可以参考github的url规则
                     setTimeout(function(){
@@ -67,6 +62,15 @@ define(['jQuery','storage'], function($) {
                     return sParameterName[1] === undefined ? true : sParameterName[1];
                 }
             }
+        },
+        dataFromNative:function(){
+            var data = {};
+            try {
+                webkit.messageHandlers['getData'].postMessage({});
+            } catch (err) {
+                
+            }
+            return data;
         },
         storage:$.localStorage
     }

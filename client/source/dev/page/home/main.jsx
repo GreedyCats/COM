@@ -60,7 +60,7 @@ define([
 			var self = this;
 			var headerData = {
 				btn1:{
-					href:'#gc_showMenu',
+					href:'#gc_show_menu',
 					icon:'menu'
 				},
 				btn2:{

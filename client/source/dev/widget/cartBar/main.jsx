@@ -95,7 +95,7 @@ define(['React','less!./cartBar'], function(React){
                             <span className='decimal'>.{price && price[1] || 0}</span>
                         </div>
                     </div>
-                    <a href='#gc_goCart' className='cartBox'>
+                    <a href='#gc_go_cart.html' className='cartBox'>
                         <Svg className='cart' name='cart'></Svg>
                         <span className='number'>{totalCount}</span>
                     </a>
