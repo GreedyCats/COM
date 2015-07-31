@@ -7,7 +7,7 @@ define([
 ], function(when, React,Header,FC){
 
 	FC.attach(document.body);
-
+	
 	return React.createClass({
         getInitialState: function() {
             return {
@@ -147,30 +147,30 @@ define([
             });
 		},
 		removeOneById:function(packageID){
+			var self = this;
 			var willDelete = confirm('删除？');
 			if (willDelete){
-				var itemDom = React.findDOMNode(this.refs[packageID]);
-				$(itemDom).addClass('removeByTransform');
-				
 				var cartListInfo = this.state.cartListInfo;
 	            var self = this;
 	            var deleteIndex = 0;
 	            cartListInfo.forEach(function(item, index){
 	                if (item._id == packageID){
 	                	deleteIndex = index;
+	                	item.readyDelete = true;
 	                    return;
 	                }
 	            });
-				setTimeout(function(){
-		            cartListInfo.splice(deleteIndex, 1);
-		            self.setState({
-		            	cartListInfo: cartListInfo
-		            },function(){
-		                self.setLocalStorage();
-		                self.getTotalPrice();
-		            });
-				},300)
-				
+	            this.forceUpdate(function(){
+	            	 setTimeout(function(){
+			            cartListInfo.splice(deleteIndex, 1);
+			            self.setState({
+			            	cartListInfo: cartListInfo
+			            },function(){
+			                self.setLocalStorage();
+			                self.getTotalPrice();
+			            });
+					},300)
+	            })
 			}
 		},
 		getTotalPrice: function(){
@@ -235,7 +235,8 @@ define([
 					<ul className="cartList">
 						{
 							this.state.cartListInfo.map(function(package,index){
-								return (<li ref={package._id}>
+								var clz = package.readyDelete ? 'removeByTransform' : undefined;
+								return (<li ref={package._id} className={clz}>
 											<div className="packageWrapper">
 												<img src={package.thumbnail} alt={package.title} className="packageThumb"/>
 												<div className="infoBox">
