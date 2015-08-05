@@ -39,6 +39,15 @@ module.exports = {
 			resData.totalPrice = totalPrice.toFixed(1);
 			next(err,resData);
 		});
+	},
+	addPackageToCart:function(data,next){
+
+	},
+	subPackageById:function(){
+
+	},
+	removePackageFromCart:function(data,next){
+
 	}
 }
 
