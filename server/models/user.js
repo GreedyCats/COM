@@ -7,7 +7,7 @@ var UserSchema = new Schema({
 	password: {type: String, default: ""},
 	experience:{type:Number,default: 0},
 	gender:{type:Number,default:0},
-	avatarUrl:{type:String,default:"http://localhost:3000/uploads/avatar.jpg"},
+	avatarUrl:{type:String,default:"/uploads/avatar.jpg"},
 	addressList:[{
 		type:Schema.Types.ObjectId,
 		ref:'Address'
