@@ -37,4 +37,11 @@ router.post('/getCartListInfo', function(req, res) {
     });
 });
 
+//修改购物车数量，依赖Cookie
+router.post('/modifyCart',function(req,res){
+    var token = req.cookie.ut;
+    var modifyData = req.body.data;
+    res.send({});
+});
+
 module.exports = router;
