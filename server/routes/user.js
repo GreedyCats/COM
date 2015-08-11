@@ -20,7 +20,7 @@ router.get('/addOneTest', function(req, res) {
 
 });
 
-router.get('/login', function(req, res) {
+router.post('/login', function(req, res) {
 
     var loginData = {
         'ut': req.cookies.ut,
@@ -34,7 +34,7 @@ router.get('/login', function(req, res) {
 
 });
 
-router.get('/checkLogin', function(req, res) {
+router.post('/checkLogin', function(req, res) {
     var ut = req.cookies.ut;
     var response = new Response();
     user.checkLogin(ut, function(result) {

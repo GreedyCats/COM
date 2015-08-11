@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var cart = require('../controllers/cart');
 var Response = require('../controllers/response');
+var user = require('../controllers/user');
+
 /* GET cart page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
@@ -38,10 +40,40 @@ router.post('/getCartListInfo', function(req, res) {
 });
 
 //修改购物车数量，依赖Cookie
-router.post('/modifyCart',function(req,res){
-    var token = req.cookie.ut;
+//data = { type : 操作类型[remove,modify,add] , packageID: packageID ,count:Int}
+router.post('/modify',function(req,res){
+    var ut = req.cookies.ut;
     var modifyData = req.body.data;
-    res.send({});
+    var response = new Response();
+
+    // modifyData = {
+    //     type: 'modify',
+    //     packageID:'55a720d24cc9eaeb14cc4ce2',
+    //     count: 1
+    // }
+
+    user.checkLogin(ut,function(result){
+        if (result.status) {
+            //已登陆
+            var userID = result.userID;
+            cart.modifyCart(userID,modifyData,function(err,data){
+                if (err) {
+                    response.data = {};
+                    response.message = '服务器错误';
+                    response.code = -2;
+                }else{
+                    response.data = data;
+                    response.code = 1;
+                }
+                res.send(response);
+            })
+        }else{
+            response.data = {};
+            response.message = '未登录,请先登录';
+            response.code = -1;
+            res.send(response);
+        }
+    })
 });
 
 module.exports = router;
