@@ -10,6 +10,7 @@ var package = require('./routes/package');
 var product = require('./routes/product');
 var country = require('./routes/country');
 var cart = require('./routes/cart');
+var order = require('./routes/order');
 var mongoose = require('mongoose');
 var CONFIG = require('./config.json');
 
@@ -40,6 +41,7 @@ app.use('/package', package);
 app.use('/product', product);
 app.use('/country', country);
 app.use('/cart', cart);
+app.use('/order', order);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
