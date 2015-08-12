@@ -1,0 +1,268 @@
+@import '../../global/base.less';
+@import '../../global/common.less';
+
+@itemHeight: 85px;
+body {
+  background-color: #edeff0;
+}
+
+.pageConfirmOrder {
+  .commonHeader {
+    background: #fff;
+    text-align: center;
+    border-bottom: 1px solid #d2dae8;
+    .headerBtn {
+      .vector.headerIcon {
+        path {
+          fill: #ffd75f;
+        }
+      }
+    }
+    .title {
+      display: inline-block;
+      font-size: 17px;
+      .smallTitle {
+        font-size: 14px;
+        color: #b6c3d7;
+      }
+    }
+  }
+  .receivingAddress {
+    .box-sizing();
+    .display(flex);
+    .align-items();
+    height: 47px;
+    line-height: 47px;
+    background-color: #fff;
+    margin-top: 61px;
+    border-bottom: 1px solid #d2dae8;
+    padding: 0 15px 0 15px;
+    font-size: 1.4rem;
+    .addressLabel {
+      .flex(1);
+    }
+    .curAddress {
+      display: inline-block;
+      width: 80px;
+      background-color: #ffd760;
+      color: #fff;
+      height: 27px;
+      line-height: 27px;
+      border-radius: 13px;
+      text-align: center;
+    }
+    .selectAddress {
+      display: inline-block;
+      width: 27px;
+      height: 27px;
+      line-height: 27px;
+      text-align: right;
+      vertical-align: top;
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  .cartList {
+    margin-top: 10px;
+    border-top: 1px solid #d2dae8;
+
+    li {
+      display: block;
+      overflow: hidden;
+      position: relative;
+      background-color: #fff;
+      border-bottom: 1px solid #d2dae8;
+      .packageWrapper {
+        width: 100%;
+        padding: 15px;
+        .box-sizing();
+        .display(flex);
+        .align-items();
+        &.transform {
+          .transition(300ms);
+        }
+
+        .packageThumb {
+          width: 60px;
+          height: 64px;
+          border: 1px solid #d2dae8;
+        }
+        .infoBox {
+          .flex(1);
+          margin: 0 10px;
+          .title {
+            color: #33363b;
+            font-size: 12px;
+          }
+          .price {
+            display: block;
+            font-size: 14px;
+            color: #7b8392;
+          }
+        }
+        .count {
+          width: 60px;
+          text-align: right;
+          line-height: @itemHeight;
+          font-size: 24px;
+          font-weight: bold;
+          color: #7b8392;
+          .multiSign {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .coupon {
+    width: 100%;
+    padding: 0 0 0 15px;
+    .box-sizing();
+    .display(flex);
+    .align-items();
+    height: 47px;
+    line-height: 47px;
+    border-top: 1px solid #d2dae8;
+    background-color: #fff;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    .couponIcon {
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .couponRight{
+      .flex(1);
+      .box-sizing();
+      .display(flex);
+      .align-items();
+      padding: 0 15px 0 0;
+      border-bottom: 1px solid #d2dae8;
+    }
+    .couponLabel {
+      .flex(1);
+    }
+    .curCoupon {
+      display: inline-block;
+      color: #fc6e51;
+      font-size: 1.9rem;
+      font-weight: bold;
+      .symbol{
+        font-family: "Adobe Heiti Std";
+        font-size: 1.7rem;
+      }
+      .cny{
+        font-family: "Microsoft YaHei";
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .transport {
+    width: 100%;
+    padding: 0 15px 0 15px;
+    .box-sizing();
+    .display(flex);
+    .align-items();
+    height: 47px;
+    line-height: 47px;
+    border-bottom: 1px solid #d2dae8;
+    background-color: #fff;
+    font-size: 1.4rem;
+    .transportIcon {
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .transportLabel {
+      .flex(1);
+    }
+    .curTransport {
+
+    }
+  }
+
+  .paymentType {
+    width: 100%;
+    padding: 0 15px 0 15px;
+    .box-sizing();
+    .display(flex);
+    .align-items();
+    height: 47px;
+    line-height: 47px;
+    border-top: 1px solid #d2dae8;
+    border-bottom: 1px solid #d2dae8;
+    background-color: #fff;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    .paymentIcon {
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .paymentLabel {
+      .flex(1);
+    }
+    .curPaymentIcon {
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .curPayment{
+      color: #7b8392;
+    }
+  }
+
+  .goPayBox {
+    @orangeColor: #ffc107;
+    height: 75px;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #d9d9d9;
+    .content {
+      .display(flex);
+      .align-items();
+      height: 100%;
+      width: 90%;
+      margin: 0 auto;
+      color: #040404;
+      .left {
+        display: inline-block;
+        .flex(1);
+        font-size: 1.4rem;
+        .price {
+          color: #fc6e51;
+          display: inline-block;
+          font-weight: bold;
+          font-size: 1.9rem;
+          .rmb {
+            vertical-align: text-bottom;
+          }
+          .integer {
+            font-size: 2.8rem;
+          }
+        }
+      }
+      .btnGoPay {
+        width: 140px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 2.0rem;
+        text-align: center;
+        border-radius: 5px;
+        display: inline-block;
+        background-color: @orangeColor;
+      }
+    }
+  }
+}
