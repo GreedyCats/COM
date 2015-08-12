@@ -50,76 +50,9 @@ define([
                 }
             })
         },
-        addCountById: function (packageID) {
-            var cartListInfo = this.state.cartListInfo;
-            var self = this;
-            cartListInfo.forEach(function (item) {
-                if (item._id == packageID) {
-                    item.count++;
-                    return;
-                }
-            });
-            this.setState({
-                cartListInfo: cartListInfo
-            }, function () {
-                self.setLocalStorage();
-                self.getTotalPrice();
-            });
-        },
-        subCountById: function (packageID) {
-            var cartListInfo = this.state.cartListInfo;
-            var self = this;
-            cartListInfo.forEach(function (item) {
-                if (item._id == packageID) {
-                    if (item.count === 1) {
-                        self.removeOneById(packageID);
-                    } else {
-                        item.count--;
-                    }
-                    return;
-                }
-            });
-            this.setState({
-                cartListInfo: cartListInfo
-            }, function () {
-                self.setLocalStorage();
-                self.getTotalPrice();
-            });
-        },
-        getTotalPrice: function () {
-            var self = this;
-            $.ajax({
-                method: 'POST',
-                type: 'JSON',
-                url: '/cart/getTotalPrice',
-                data: {
-                    cartList: Bridge.storage.get('cartList')
-                },
-                success: function (data) {
-                    switch (data.status) {
-                        case 'success':
-                            self.setState({totalPrice: data.data.totalPrice});
-                            break;
-                        case 'error':
-                            alert(data.message);
-                            break;
-                    }
-                },
-                error: function (err) {
-                    alert(err);
-                }
-            });
-        },
-        setLocalStorage: function () {
-            var cartList = [];
-            this.state.cartListInfo.forEach(function (item, index) {
-                var newObj = {
-                    packageID: item._id,
-                    count: item.count
-                }
-                cartList.push(newObj);
-            });
-            Bridge.storage.set('cartList', cartList);
+        selectAddress:function(){
+            alert('选择地址');
+            console.log(1111,arguments);
         },
         render: function () {
             var self = this;
@@ -143,7 +76,7 @@ define([
                     <div className="receivingAddress">
                         <label className="addressLabel">收货地址</label>
                         <div className="curAddress">Home</div>
-							<span className="selectAddress">
+							<span className="selectAddress" onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
 								<Svg className="icon" name='add'></Svg>
 							</span>
                     </div>
