@@ -1,0 +1,59 @@
+@import '../../../global/common.less';
+
+.orderTab{
+	text-align: justify;
+	height: 60px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #d2dae8;
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	left: 0;
+	top: 61px;
+	background-color: #fff;
+	padding: 0 15px;
+	.box-sizing();
+	&:after{
+		content:'';
+		width: 100%;
+		display: inline-block;
+	};
+	li{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		&.on{
+			.tabLink{
+				height: 58px;
+				border-bottom: 2px solid #ffc107;
+				.icon{
+					path{
+						fill:#ffc107;
+					}
+				}
+				.tabName{
+					color: #ffc107;
+				}
+			}
+		}
+		.tabLink{
+			width: 60px;
+			height: 60px;
+			display: inline-block;
+			.icon{
+				margin:8px 0 5px 0;
+				width: 23px;
+				height: 23px;
+				path{
+					fill:#7b8392;
+				};
+			}
+			.tabName{
+				display: block;
+				font-size: 14px;
+				color: #7b8392;
+			}
+		}
+	}
+}
