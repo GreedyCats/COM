@@ -6,6 +6,7 @@
 	margin-bottom: 15px;
 	border-bottom: 1px solid #d2dae8;
 	position: fixed;
+	z-index: 10;
 	width: 100%;
 	left: 0;
 	top: 61px;
@@ -22,6 +23,20 @@
 		width: 60px;
 		height: 60px;
 		text-align: center;
+		&.on{
+			.tabLink{
+				height: 58px;
+				border-bottom: 2px solid #ffc107;
+				.icon{
+					path{
+						fill:#ffc107;
+					}
+				}
+				.tabName{
+					color: #ffc107;
+				}
+			}
+		}
 		.tabLink{
 			width: 60px;
 			height: 60px;
