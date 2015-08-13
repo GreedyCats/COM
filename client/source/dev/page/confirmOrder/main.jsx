@@ -12,6 +12,7 @@ define([
         getInitialState: function () {
             return {
                 cartListInfo: [],
+                receivingAddress: '',
                 totalPrice: 0
             };
         },
@@ -50,9 +51,9 @@ define([
                 }
             })
         },
-        selectAddress:function(){
+        selectAddress: function () {
             alert('选择地址');
-            console.log(1111,arguments);
+            console.log(1111, arguments);
         },
         render: function () {
             var self = this;
@@ -60,6 +61,25 @@ define([
             this.state.cartListInfo.forEach(function (item) {
                 totalCount += item.count;
             });
+            var receivingAddressTpl = (<div className="noReceivingAddress">
+                                            <span className="noReceivingAddressIcon"
+                                                  onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
+                                                <Svg className="icon" name='add'></Svg>
+                                            </span>
+                <label className="addressLabel">收货地址</label>
+            </div>);
+            if (self.state.receivingAddress) {
+                receivingAddressTpl = (<div className="receivingAddress">
+                    <label className="addressLabel">收货地址</label>
+                    <div className="curAddress">Home</div>
+                        <span className="selectAddress"
+                              onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
+                            <Svg className="icon" name='add'></Svg>
+                        </span>
+                </div>);
+            }
+
+
             var headerData = {
                 btn1: {
                     href: '#gc_back',
@@ -73,13 +93,7 @@ define([
             return (
                 <div className='pageConfirmOrder'>
                     <Header headerData={headerData}></Header>
-                    <div className="receivingAddress">
-                        <label className="addressLabel">收货地址</label>
-                        <div className="curAddress">Home</div>
-							<span className="selectAddress" onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
-								<Svg className="icon" name='add'></Svg>
-							</span>
-                    </div>
+                    {receivingAddressTpl}
                     <ul className="cartList">
                         {
                             this.state.cartListInfo.map(function (package, index) {
@@ -107,7 +121,8 @@ define([
 						</span>
                         <div className="couponRight">
                             <label className="couponLabel">优惠券</label>
-                            <div className="curCoupon"><span className="symbol">-</span><span className="cny">￥</span>10</div>
+                            <div className="curCoupon"><span className="symbol">-</span><span className="cny">￥</span>10
+                            </div>
                         </div>
                     </div>
 
