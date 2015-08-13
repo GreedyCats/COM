@@ -12,7 +12,7 @@ define([
         getInitialState: function () {
             return {
                 cartListInfo: [],
-                receivingAddress: '',
+                receivingAddress: '收货地址',
                 totalPrice: 0
             };
         },
@@ -55,26 +55,30 @@ define([
             alert('选择地址');
             console.log(1111, arguments);
         },
+        addAddress: function () {
+            alert('新建地址');
+            console.log(1111, arguments);
+        },
         render: function () {
             var self = this;
             var totalCount = 0;
             this.state.cartListInfo.forEach(function (item) {
                 totalCount += item.count;
             });
-            var receivingAddressTpl = (<div className="noReceivingAddress">
-                                            <span className="noReceivingAddressIcon"
-                                                  onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
+            var receivingAddressTpl = (
+                <div className="noReceivingAddress" onClick={this.addAddress&&this.addAddress.bind(null, 'test')}>
+                                            <span className="noReceivingAddressIcon">
                                                 <Svg className="icon" name='add'></Svg>
                                             </span>
-                <label className="addressLabel">收货地址</label>
-            </div>);
+                    <label className="addressLabel">收货地址</label>
+                </div>);
             if (self.state.receivingAddress) {
-                receivingAddressTpl = (<div className="receivingAddress">
+                receivingAddressTpl = (<div className="receivingAddress"
+                                            onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
                     <label className="addressLabel">收货地址</label>
                     <div className="curAddress">Home</div>
-                        <span className="selectAddress"
-                              onClick={this.selectAddress&&this.selectAddress.bind(null, 'test')}>
-                            <Svg className="icon" name='add'></Svg>
+                        <span className="selectAddress">
+                            <Svg className="icon" name='arrow_right'></Svg>
                         </span>
                 </div>);
             }
@@ -117,7 +121,7 @@ define([
 
                     <div className="coupon">
 						<span className="couponIcon">
-								<Svg className="icon" name='add'></Svg>
+								<Svg className="icon" name='label_coupon'></Svg>
 						</span>
                         <div className="couponRight">
                             <label className="couponLabel">优惠券</label>
@@ -128,7 +132,7 @@ define([
 
                     <div className="transport">
 						<span className="transportIcon">
-								<Svg className="icon" name='add'></Svg>
+								<Svg className="icon" name='label_truck'></Svg>
 						</span>
                         <label className="transportLabel">运费</label>
 
@@ -137,12 +141,10 @@ define([
 
                     <div className="paymentType">
 						<span className="paymentIcon">
-								<Svg className="icon" name='add'></Svg>
+								<Svg className="icon" name='label_pay'></Svg>
 						</span>
                         <label className="paymentLabel">支付方式</label>
-						<span className="curPaymentIcon">
-							<Svg className="icon" name='add'></Svg>
-						</span>
+                        <div className="curPaymentIcon" style={{backgroundImage:'url(/uploads/alipay.png)'}}></div>
                         <div className="curPayment">支付宝</div>
                     </div>
                     <div className='goPayBox' ref='goPayBox'>

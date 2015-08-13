@@ -40,6 +40,7 @@ body {
     padding: 0 15px 0 15px;
     font-size: 1.4rem;
     .addressLabel {
+      display: block;
       .flex(1);
     }
     .curAddress {
@@ -58,7 +59,7 @@ body {
       height: 27px;
       line-height: 27px;
       text-align: right;
-      vertical-align: top;
+      vertical-align: middle;
       .icon {
         width: 16px;
         height: 16px;
@@ -66,7 +67,7 @@ body {
     }
   }
 
-  .noReceivingAddress{
+  .noReceivingAddress {
     height: 44px;
     line-height: 44px;
     margin-top: 61px;
@@ -75,9 +76,7 @@ body {
     font-size: 1.4rem;
     .noReceivingAddressIcon {
       display: inline-block;
-      width: 27px;
-      height: 27px;
-      line-height: 27px;
+      margin-right: 10px;
       text-align: center;
       vertical-align: middle;
       .icon {
@@ -153,11 +152,12 @@ body {
     font-size: 1.4rem;
     .couponIcon {
       .icon {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
       }
     }
-    .couponRight{
+    .couponRight {
       .flex(1);
       .box-sizing();
       .display(flex);
@@ -167,17 +167,18 @@ body {
     }
     .couponLabel {
       .flex(1);
+      display: block;
     }
     .curCoupon {
       display: inline-block;
       color: #fc6e51;
       font-size: 1.9rem;
       font-weight: bold;
-      .symbol{
+      .symbol {
         font-family: "Adobe Heiti Std";
         font-size: 1.7rem;
       }
-      .cny{
+      .cny {
         font-family: "Microsoft YaHei";
         font-size: 1.2rem;
       }
@@ -197,11 +198,13 @@ body {
     font-size: 1.4rem;
     .transportIcon {
       .icon {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
       }
     }
     .transportLabel {
+      display: block;
       .flex(1);
     }
     .curTransport {
@@ -225,20 +228,24 @@ body {
     font-size: 1.4rem;
     .paymentIcon {
       .icon {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
       }
     }
     .paymentLabel {
       .flex(1);
+      display: block;
     }
     .curPaymentIcon {
-      .icon {
-        width: 16px;
-        height: 16px;
-      }
+      width: 22px;
+      height: 22px;
+      background-size: 100%;
+      margin-right: 10px;;
+      border: 1px solid #d4dcea;
+      border-radius: 12px;
     }
-    .curPayment{
+    .curPayment {
       color: #7b8392;
     }
   }
@@ -260,7 +267,7 @@ body {
       margin: 0 auto;
       color: #040404;
       .left {
-        display: inline-block;
+        display: block;
         .flex(1);
         font-size: 1.4rem;
         .price {
